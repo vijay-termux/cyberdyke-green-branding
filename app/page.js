@@ -132,8 +132,8 @@ const Navbar = () => {
         }`}
       >
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
-          <Link href="/" className="flex items-center gap-2">
-            <Logo />
+          <Link href="/" aria-label="CyberdykeTech home" className="flex w-[245px] shrink-0 items-center gap-2 sm:w-[285px]">
+            <Logo className="w-full" />
           </Link>
 
           <nav className="hidden items-center gap-6 xl:gap-8 lg:flex">
