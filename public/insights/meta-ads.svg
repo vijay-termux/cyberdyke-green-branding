@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" fill="none">
+  <defs><linearGradient id="ma" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0F172A"/><stop offset="100%" stop-color="#1E1B4B"/></linearGradient></defs>
+  <rect width="400" height="240" fill="url(#ma)"/>
+  <g transform="translate(80,50)"><rect width="55" height="55" rx="12" fill="#E1306C"/><rect x="12" y="12" width="31" height="31" rx="7" stroke="#FFFFFF" stroke-width="3" fill="none"/></g>
+  <g transform="translate(150,80)"><rect width="55" height="55" rx="12" fill="#FF0000"/><path d="M20 20 L20 35 L36 27 Z" fill="#FFFFFF"/></g>
+  <g transform="translate(220,50)"><rect width="55" height="55" rx="12" fill="#000000"/><path d="M14 14 L41 41 M41 14 L14 41" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/></g>
+  <g transform="translate(290,80)"><rect width="55" height="55" rx="12" fill="#0A66C2"/><rect x="15" y="25" width="6" height="18" fill="#FFFFFF"/><circle cx="18" cy="18" r="3" fill="#FFFFFF"/><path d="M27 43 L27 30 Q27 22 35 22 Q43 22 43 30 L43 43" stroke="#FFFFFF" stroke-width="5" fill="none" stroke-linecap="round"/></g>
+  <g transform="translate(115,130)"><rect width="55" height="55" rx="12" fill="#1DB954"/><path d="M15 25 Q28 20 42 25 M17 33 Q28 30 39 33 M19 40 Q28 38 37 40" stroke="#FFFFFF" stroke-width="3" fill="none" stroke-linecap="round"/></g>
+  <g transform="translate(255,130)"><rect width="55" height="55" rx="12" fill="#25D366"/><path d="M15 42 Q15 22 30 22 Q45 22 45 37 Q45 45 37 45 L15 45 Z" fill="#FFFFFF"/></g>
+</svg>
