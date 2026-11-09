@@ -131,12 +131,12 @@ const Navbar = () => {
             : 'bg-[#041d11]'
         }`}
       >
-        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
-          <Link href="/" aria-label="CyberdykeTech home" className="flex w-[245px] shrink-0 items-center gap-2 sm:w-[285px]">
+        <div className="mx-auto flex h-20 max-w-[1500px] items-center gap-4 px-4 sm:px-6">
+          <Link href="/" aria-label="CyberdykeTech home" className="flex w-[220px] shrink-0 items-center lg:w-[250px]">
             <Logo className="w-full" />
           </Link>
 
-          <nav className="hidden items-center gap-6 xl:gap-8 lg:flex">
+          <nav className="hidden min-w-0 flex-1 items-center justify-end gap-4 lg:flex xl:gap-6">
             {navLinks.map((item) => {
               const isActive = activeTab === item.label
               return (
@@ -157,9 +157,9 @@ const Navbar = () => {
             })}
           </nav>
 
-          <div className="hidden lg:flex items-center">
+          <div className="hidden shrink-0 items-center lg:flex">
             <Link href="#contact">
-              <button className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#00D084] to-[#00B871] px-5 py-2.5 font-sora text-[13px] font-semibold text-white shadow-[0_0_20px_rgba(0,208,132,0.4)] transition-all duration-300 hover:shadow-[0_0_28px_rgba(0,208,132,0.7)] hover:scale-[1.02]">
+              <button className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-[#00D084] to-[#00B871] px-4 py-2.5 font-sora text-[12px] font-semibold text-white shadow-[0_0_20px_rgba(0,208,132,0.4)] transition-all duration-300 hover:shadow-[0_0_28px_rgba(0,208,132,0.7)] hover:scale-[1.02] xl:px-5 xl:text-[13px]">
                 Get Free Consultation
                 <ArrowUpRight size={15} />
               </button>
