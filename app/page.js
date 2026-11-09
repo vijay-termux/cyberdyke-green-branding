@@ -112,14 +112,14 @@ const Navbar = () => {
   }, [])
 
   const navLinks = [
-    { label: 'Home', href: '#home' },
-    { label: 'About Us', href: '#about-us' },
-    { label: 'Services', href: '#services' },
+    { label: 'Home', href: '/' },
+    { label: 'About Us', href: '/about' },
+    { label: 'Services', href: '/services' },
     { label: 'Training', href: '/training' },
     { label: 'Internships', href: '/internships' },
-    { label: 'Certificate Verification', href: '/verify' },
+    { label: 'Certificate Verification', href: '/certificate-verification' },
     { label: 'Careers', href: '/careers' },
-    { label: 'Contact Us', href: '#contact' },
+    { label: 'Contact Us', href: '/contact' },
   ]
 
   return (
@@ -158,11 +158,9 @@ const Navbar = () => {
           </nav>
 
           <div className="hidden shrink-0 items-center lg:flex">
-            <Link href="#contact">
-              <button className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-[#00D084] to-[#00B871] px-4 py-2.5 font-sora text-[12px] font-semibold text-white shadow-[0_0_20px_rgba(0,208,132,0.4)] transition-all duration-300 hover:shadow-[0_0_28px_rgba(0,208,132,0.7)] hover:scale-[1.02] xl:px-5 xl:text-[13px]">
-                Get Free Consultation
-                <ArrowUpRight size={15} />
-              </button>
+            <Link href="/contact" className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-[#00D084] to-[#00B871] px-4 py-2.5 font-sora text-[12px] font-semibold text-white shadow-[0_0_20px_rgba(0,208,132,0.4)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_28px_rgba(0,208,132,0.7)] xl:px-5 xl:text-[13px]">
+              Get Free Consultation
+              <ArrowUpRight size={15} />
             </Link>
           </div>
 
@@ -189,10 +187,8 @@ const Navbar = () => {
                 {item.label}
               </Link>
             ))}
-            <Link href="#contact" onClick={() => setMobileOpen(false)} className="mt-2">
-              <button className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#00D084] to-[#00B871] py-3 text-sm font-semibold text-white">
-                Get Free Consultation <ArrowUpRight size={15} />
-              </button>
+            <Link href="/contact" onClick={() => setMobileOpen(false)} className="mt-2 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#00D084] to-[#00B871] py-3 text-sm font-semibold text-white">
+              Get Free Consultation <ArrowUpRight size={15} />
             </Link>
           </div>
         </div>
