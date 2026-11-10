@@ -42,6 +42,40 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* Founder */}
+        <section className="bg-[#F7F9FC] py-24">
+          <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 md:grid-cols-[minmax(260px,360px)_1fr] md:gap-16">
+            <motion.div
+              initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
+              className="relative mx-auto w-full max-w-sm"
+            >
+              <div className="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-[#00D084]/30 via-[#1565FF]/20 to-transparent blur-xl" aria-hidden="true" />
+              <div className="relative overflow-hidden rounded-[2rem] border border-white bg-white p-2 shadow-[0_25px_70px_-25px_rgba(10,42,110,0.35)]">
+                <img
+                  src="/about/founder-beernidi-vijaysagar.png"
+                  alt="BEERNIDI VIJAYSAGAR, Founder of CyberdykeTech"
+                  width="1200"
+                  height="1600"
+                  className="aspect-[3/4] w-full object-cover object-top"
+                />
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
+            >
+              <SectionEyebrow>Meet the Founder</SectionEyebrow>
+              <h2 className="mt-4 font-sora text-4xl font-black tracking-[-0.03em] text-[#0A2A6E] md:text-5xl">Building with purpose.</h2>
+              <p className="mt-5 font-inter text-base leading-relaxed text-slate-500 md:text-lg">
+                CyberdykeTech is led by a founder who believes strong digital experiences should be as ambitious as the businesses behind them.
+              </p>
+              <div className="mt-8 border-l-2 border-[#00D084] pl-5">
+                <div className="font-sora text-lg font-bold tracking-[0.08em] text-[#0A2A6E]">BEERNIDI VIJAYSAGAR</div>
+                <div className="mt-1 font-inter text-sm font-medium text-[#1565FF]">Founder &amp; CEO, CyberdykeTech</div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
         {/* Mission & Vision */}
         <section className="bg-[#F7F9FC] py-24">
           <div className="mx-auto max-w-6xl px-6 grid grid-cols-1 gap-6 md:grid-cols-2">
