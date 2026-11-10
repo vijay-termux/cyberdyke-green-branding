@@ -62,8 +62,16 @@ export default function AboutPage() {
                 className="aspect-[4/5] w-full object-cover object-top"
               />
               <div className="px-6 py-5 sm:px-7 sm:py-6">
-                <h3 className="whitespace-nowrap font-sora text-xl font-bold tracking-[-0.025em] text-white sm:text-2xl">BEERNIDI VIJAYSAGAR</h3>
-                <p className="mt-2 font-inter text-sm text-white/55 sm:text-base">Founder &amp; CEO</p>
+                <h3 className="font-sora text-2xl font-bold tracking-[-0.03em] text-white sm:text-3xl">Vijay Sagar</h3>
+                <p className="mt-2 font-inter text-sm font-medium text-[#00D084] sm:text-base">Founder &amp; CEO | Cyberdyke Tech</p>
+                <div className="mt-5 space-y-3 font-inter text-sm leading-relaxed text-white/65">
+                  <p>Vijay Sagar leads Cyberdyke Tech with a vision to help businesses attract more customers, strengthen their digital presence, and grow through innovative technology.</p>
+                  <p>By combining digital marketing, web development, and cybersecurity, he helps businesses turn digital challenges into growth opportunities.</p>
+                </div>
+                <div className="mt-5 border-t border-white/10 pt-4 font-inter text-sm leading-relaxed text-white/80">
+                  <strong className="font-semibold text-white">Our Promise:</strong> More Visibility. Better Leads. Stronger Security.
+                </div>
+                <p className="mt-4 font-inter text-sm font-medium leading-relaxed text-white/90">Let&apos;s Grow Your Business Together with Cyberdyke Tech.</p>
               </div>
             </motion.article>
           </div>
