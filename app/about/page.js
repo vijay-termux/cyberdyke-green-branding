@@ -44,7 +44,7 @@ export default function AboutPage() {
 
         {/* Founder */}
         <section className="bg-[#F7F9FC] py-24">
-          <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 md:grid-cols-[minmax(260px,360px)_1fr] md:gap-16">
+          <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 sm:px-6 md:grid-cols-[minmax(240px,360px)_minmax(0,1fr)] md:gap-14 lg:gap-16">
             <motion.div
               initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
               className="relative mx-auto w-full max-w-sm"
@@ -62,10 +62,11 @@ export default function AboutPage() {
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
+              className="min-w-0"
             >
               <SectionEyebrow>Meet the Founder</SectionEyebrow>
-              <h2 className="mt-4 font-sora text-4xl font-black tracking-[-0.03em] text-[#0A2A6E] md:text-5xl">Building with purpose.</h2>
-              <p className="mt-5 font-inter text-base leading-relaxed text-slate-500 md:text-lg">
+              <h2 className="mt-4 max-w-2xl break-words font-sora text-3xl font-black leading-tight tracking-[-0.035em] text-[#0A2A6E] sm:text-4xl md:text-5xl">Building with purpose.</h2>
+              <p className="mt-5 max-w-xl font-inter text-base leading-relaxed text-slate-500 md:text-lg">
                 CyberdykeTech is led by a founder who believes strong digital experiences should be as ambitious as the businesses behind them.
               </p>
               <div className="mt-8 border-l-2 border-[#00D084] pl-5">
