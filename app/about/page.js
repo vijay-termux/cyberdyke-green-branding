@@ -52,18 +52,18 @@ export default function AboutPage() {
             </p>
             <motion.article
               initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-              className="mt-10 w-full max-w-[360px] overflow-hidden rounded-[1.75rem] border border-white/10 bg-[#151515] text-left shadow-[0_24px_60px_-20px_rgba(10,20,30,0.4)]"
+              className="mt-10 w-full max-w-[320px] overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#151515] text-left shadow-[0_24px_60px_-20px_rgba(10,20,30,0.4)]"
             >
               <img
                 src="/about/founder-beernidi-vijaysagar.png"
                 alt="BEERNIDI VIJAYSAGAR, Founder of CyberdykeTech"
                 width="1200"
                 height="1600"
-                className="aspect-[3/4] w-full object-cover object-top"
+                className="aspect-[4/5] w-full object-cover object-top"
               />
-              <div className="px-7 py-6 sm:px-8 sm:py-7">
-                <h3 className="font-sora text-2xl font-bold tracking-[-0.03em] text-white sm:text-3xl">BEERNIDI VIJAYSAGAR</h3>
-                <p className="mt-2 font-inter text-base text-white/55">Founder &amp; CEO</p>
+              <div className="px-6 py-5 sm:px-7 sm:py-6">
+                <h3 className="whitespace-nowrap font-sora text-xl font-bold tracking-[-0.025em] text-white sm:text-2xl">BEERNIDI VIJAYSAGAR</h3>
+                <p className="mt-2 font-inter text-sm text-white/55 sm:text-base">Founder &amp; CEO</p>
               </div>
             </motion.article>
           </div>
