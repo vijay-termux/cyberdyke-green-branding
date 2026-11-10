@@ -52,18 +52,19 @@ export default function AboutPage() {
             </p>
             <motion.article
               initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-              className="mt-10 w-full max-w-[320px] overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#151515] text-left shadow-[0_24px_60px_-20px_rgba(10,20,30,0.4)]"
+              className="mt-10 flex w-full max-w-3xl flex-col overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#151515] text-left shadow-[0_24px_60px_-20px_rgba(10,20,30,0.4)] md:flex-row"
             >
               <img
                 src="/about/founder-beernidi-vijaysagar.png"
-                alt="BEERNIDI VIJAYSAGAR, Founder of CyberdykeTech"
+                alt="Vijay Sagar, Founder and CEO of Cyberdyke Tech"
                 width="1200"
                 height="1600"
-                className="aspect-[4/5] w-full object-cover object-top"
+                className="aspect-[4/5] w-full object-cover object-top md:w-[250px] md:shrink-0"
               />
-              <div className="px-6 py-5 sm:px-7 sm:py-6">
-                <h3 className="font-sora text-2xl font-bold tracking-[-0.03em] text-white sm:text-3xl">Vijay Sagar</h3>
-                <p className="mt-2 font-inter text-sm font-medium text-[#00D084] sm:text-base">Founder &amp; CEO | Cyberdyke Tech</p>
+              <div className="flex min-w-0 flex-1 flex-col justify-center px-6 py-7 sm:px-8 md:py-8">
+                <p className="font-inter text-xs font-semibold uppercase tracking-[0.18em] text-[#00D084]">Leadership</p>
+                <h3 className="mt-2 font-sora text-2xl font-bold tracking-[-0.03em] text-white sm:text-3xl">Vijay Sagar</h3>
+                <p className="mt-2 font-inter text-sm font-medium text-white/55 sm:text-base">Founder &amp; CEO <span className="text-white/25">|</span> Cyberdyke Tech</p>
                 <div className="mt-5 space-y-3 font-inter text-sm leading-relaxed text-white/65">
                   <p>Vijay Sagar leads Cyberdyke Tech with a vision to help businesses attract more customers, strengthen their digital presence, and grow through innovative technology.</p>
                   <p>By combining digital marketing, web development, and cybersecurity, he helps businesses turn digital challenges into growth opportunities.</p>
