@@ -133,7 +133,7 @@ const Navbar = () => {
       >
         <div className="mx-auto flex min-h-20 max-w-[1500px] items-center gap-3 px-4 sm:px-6 xl:gap-5 lg:min-h-28">
           <Link href="/" aria-label="CyberdykeTech home" className="flex shrink-0 items-center">
-            <Logo className="scale-110 origin-left" />
+            <Logo />
           </Link>
 
           <nav className="hidden min-w-0 flex-1 items-center justify-end gap-2 lg:flex xl:gap-4">
