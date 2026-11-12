@@ -192,9 +192,9 @@ export const Footer = () => (
           </ul>
         </div>
       </div>
-      <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/5 pt-6 md:flex-row">
-        <div className="font-inter text-[11px] text-white/40">+91 83414 96002 · LB Nagar, Hyderabad · © 2026 CyberdykeTech</div>
-        <a href="#top" className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white/70 transition hover:bg-white/10">
+      <div className="relative mt-10 flex flex-col items-center justify-center gap-3 border-t border-white/5 pt-6 md:min-h-14 md:flex-row">
+        <div className="text-center font-inter text-[11px] text-white/40">+91 83414 96002 · LB Nagar, Hyderabad · © 2026 CyberdykeTech</div>
+        <a href="#top" aria-label="Back to top" className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white/70 transition hover:bg-white/10 md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2">
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 10V2M3 5l3-3 3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
         </a>
       </div>
