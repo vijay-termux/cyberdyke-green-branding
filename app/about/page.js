@@ -42,6 +42,42 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* Founder */}
+        <section className="bg-[#F7F9FC] px-5 py-20 sm:px-6 md:py-24">
+          <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
+            <SectionEyebrow>Meet the Founder</SectionEyebrow>
+            <h2 className="mt-4 max-w-2xl font-sora text-3xl font-black leading-tight tracking-[-0.035em] text-[#0A2A6E] sm:text-4xl md:text-5xl">Building with purpose.</h2>
+            <p className="mt-4 max-w-xl font-inter text-base leading-relaxed text-slate-500 md:text-lg">
+              The person behind CyberdykeTech&apos;s vision, culture, and commitment to meaningful digital work.
+            </p>
+            <motion.article
+              initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+              className="mt-10 flex w-full max-w-3xl flex-col overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#151515] text-left shadow-[0_24px_60px_-20px_rgba(10,20,30,0.4)] md:flex-row"
+            >
+              <img
+                src="/about/founder-beernidi-vijaysagar.png"
+                alt="Vijay Sagar, Founder and CEO of Cyberdyke Tech"
+                width="1200"
+                height="1600"
+                className="aspect-[4/5] w-full object-cover object-top md:w-[250px] md:shrink-0"
+              />
+              <div className="flex min-w-0 flex-1 flex-col justify-center px-6 py-7 sm:px-8 md:py-8">
+                <p className="font-inter text-xs font-semibold uppercase tracking-[0.18em] text-[#00D084]">Leadership</p>
+                <h3 className="mt-2 font-sora text-2xl font-bold tracking-[-0.03em] text-white sm:text-3xl">Vijay Sagar</h3>
+                <p className="mt-2 font-inter text-sm font-medium text-white/55 sm:text-base">Founder &amp; CEO <span className="text-white/25">|</span> Cyberdyke Tech</p>
+                <div className="mt-5 space-y-3 font-inter text-sm leading-relaxed text-white/65">
+                  <p>Vijay Sagar leads Cyberdyke Tech with a vision to help businesses attract more customers, strengthen their digital presence, and grow through innovative technology.</p>
+                  <p>By combining digital marketing, web development, and cybersecurity, he helps businesses turn digital challenges into growth opportunities.</p>
+                </div>
+                <div className="mt-5 border-t border-white/10 pt-4 font-inter text-sm leading-relaxed text-white/80">
+                  <strong className="font-semibold text-white">Our Promise:</strong> More Visibility. Better Leads. Stronger Security.
+                </div>
+                <p className="mt-4 font-inter text-sm font-medium leading-relaxed text-white/90">Let&apos;s Grow Your Business Together with Cyberdyke Tech.</p>
+              </div>
+            </motion.article>
+          </div>
+        </section>
+
         {/* Mission & Vision */}
         <section className="bg-[#F7F9FC] py-24">
           <div className="mx-auto max-w-6xl px-6 grid grid-cols-1 gap-6 md:grid-cols-2">

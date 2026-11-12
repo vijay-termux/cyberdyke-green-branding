@@ -112,14 +112,14 @@ const Navbar = () => {
   }, [])
 
   const navLinks = [
-    { label: 'Home', href: '#home' },
-    { label: 'About Us', href: '#about-us' },
-    { label: 'Services', href: '#services' },
+    { label: 'Home', href: '/' },
+    { label: 'About Us', href: '/about' },
+    { label: 'Services', href: '/services' },
     { label: 'Training', href: '/training' },
     { label: 'Internships', href: '/internships' },
-    { label: 'Certificate Verification', href: '/verify' },
+    { label: 'Certificate Verification', href: '/certificate-verification' },
     { label: 'Careers', href: '/careers' },
-    { label: 'Contact Us', href: '#contact' },
+    { label: 'Contact Us', href: '/contact' },
   ]
 
   return (
@@ -131,12 +131,12 @@ const Navbar = () => {
             : 'bg-[#041d11]'
         }`}
       >
-        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
-          <Link href="/" className="flex items-center gap-2">
+        <div className="mx-auto flex min-h-20 max-w-[1500px] items-center gap-3 px-4 sm:px-6 xl:gap-5 lg:min-h-28">
+          <Link href="/" aria-label="CyberdykeTech home" className="flex shrink-0 items-center">
             <Logo />
           </Link>
 
-          <nav className="hidden items-center gap-6 xl:gap-8 lg:flex">
+          <nav className="hidden min-w-0 flex-1 items-center justify-end gap-2 lg:flex xl:gap-4">
             {navLinks.map((item) => {
               const isActive = activeTab === item.label
               return (
@@ -144,7 +144,7 @@ const Navbar = () => {
                   key={item.label}
                   href={item.href}
                   onClick={() => setActiveTab(item.label)}
-                  className={`group relative flex flex-col items-center py-2 font-inter text-[13px] font-medium transition-colors ${
+                  className={`group relative flex flex-col items-center py-2 font-inter text-[14px] font-medium transition-colors xl:text-[15px] ${
                     isActive ? 'text-white font-semibold' : 'text-slate-300 hover:text-white'
                   }`}
                 >
@@ -157,12 +157,10 @@ const Navbar = () => {
             })}
           </nav>
 
-          <div className="hidden lg:flex items-center">
-            <Link href="#contact">
-              <button className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#00D084] to-[#00B871] px-5 py-2.5 font-sora text-[13px] font-semibold text-white shadow-[0_0_20px_rgba(0,208,132,0.4)] transition-all duration-300 hover:shadow-[0_0_28px_rgba(0,208,132,0.7)] hover:scale-[1.02]">
-                Get Free Consultation
-                <ArrowUpRight size={15} />
-              </button>
+          <div className="hidden shrink-0 items-center lg:flex">
+            <Link href="/contact" className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-full bg-gradient-to-r from-[#00D084] to-[#00B871] px-3 py-3 font-sora text-[12px] font-semibold text-white shadow-[0_0_20px_rgba(0,208,132,0.4)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_28px_rgba(0,208,132,0.7)] xl:px-4 xl:text-[13px]">
+              Get Free Consultation
+              <ArrowUpRight size={15} />
             </Link>
           </div>
 
@@ -189,10 +187,8 @@ const Navbar = () => {
                 {item.label}
               </Link>
             ))}
-            <Link href="#contact" onClick={() => setMobileOpen(false)} className="mt-2">
-              <button className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#00D084] to-[#00B871] py-3 text-sm font-semibold text-white">
-                Get Free Consultation <ArrowUpRight size={15} />
-              </button>
+            <Link href="/contact" onClick={() => setMobileOpen(false)} className="mt-2 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#00D084] to-[#00B871] py-3 text-sm font-semibold text-white">
+              Get Free Consultation <ArrowUpRight size={15} />
             </Link>
           </div>
         </div>
