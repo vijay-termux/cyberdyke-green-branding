@@ -90,7 +90,7 @@ export const Nav = () => {
     <motion.nav initial={{ y: -60, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6 }}
       className="fixed left-0 right-0 top-0 z-50 px-4 pt-4">
       <div
-        className={`mx-auto flex w-full max-w-7xl items-center justify-between gap-4 rounded-2xl px-6 py-4 transition-all ${
+        className={`mx-auto flex w-full max-w-7xl items-center justify-between gap-3 rounded-2xl px-3 py-3 transition-all sm:px-5 lg:gap-4 lg:px-6 ${
           scrolled
             ? 'border border-emerald-200/15 bg-[#062817]/88 backdrop-blur-xl shadow-[0_18px_60px_-30px_rgba(0,0,0,0.8)]'
             : ''
@@ -99,18 +99,17 @@ export const Nav = () => {
         <Link
           href="/"
           aria-label="CyberdykeTech home"
-          className="flex shrink-0 items-center transition-transform hover:scale-[1.02]"
+          className="flex min-w-0 shrink-0 items-center transition-transform hover:scale-[1.02]"
         >
-          <Logo className="h-[78px] w-[139px] md:h-[96px] md:w-[171px]" />
+          <Logo compact />
         </Link>
 
-        {/* NAVIGATION LINKS */}
-        <div className="hidden items-center gap-1 md:flex">
+        <div className="hidden min-w-0 flex-1 items-center justify-center gap-0 min-[1200px]:flex">
           {routes.map((r) => {
             const active = pathname === r.href
             return (
-              <Link key={r.href} href={r.href}
-                className={`group relative rounded-full px-4 py-1.5 font-sora text-[13px] font-medium transition-colors ${active ? 'text-white' : 'text-white/70 hover:text-white'}`}>
+              <Link key={r.href} href={r.href} aria-current={active ? 'page' : undefined}
+                className={`group relative whitespace-nowrap rounded-full px-2 py-2 font-sora text-[12px] font-medium transition-colors 2xl:px-2.5 2xl:text-[13px] ${active ? 'text-white' : 'text-white/70 hover:text-white'}`}>
                 {r.label}
                 {active && <span className="absolute -bottom-0.5 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-[#34D399] shadow-[0_0_8px_#34D399]" />}
               </Link>
@@ -118,20 +117,27 @@ export const Nav = () => {
           })}
         </div>
 
-        {/* CTA BUTTON */}
-        <div className="flex items-center gap-2 shrink-0">
-          <MagneticBtn href="/contact" className="!px-5 !py-2.5">Get Free Consultation <ArrowUpRight size={14} /></MagneticBtn>
-          <button onClick={() => setOpen(!open)} className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white md:hidden">
+        <div className="flex shrink-0 items-center gap-2">
+          <div className="hidden sm:flex">
+            <MagneticBtn href="/contact" className="!px-3 !py-2 sm:!px-4">Get Free Consultation <ArrowUpRight size={14} /></MagneticBtn>
+          </div>
+          <button
+            type="button"
+            onClick={() => setOpen((value) => !value)}
+            aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={open}
+            aria-controls="mobile-site-navigation"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white min-[1200px]:hidden"
+          >
             {open ? <X size={16} /> : <Menu size={16} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile drawer */}
       {open && (
-        <div className="mx-auto mt-2 max-w-7xl rounded-2xl border border-emerald-200/15 bg-[#062817]/95 p-4 backdrop-blur-xl md:hidden">
+        <div id="mobile-site-navigation" className="mx-auto mt-2 max-w-7xl rounded-2xl border border-emerald-200/15 bg-[#062817]/95 p-3 backdrop-blur-xl min-[1200px]:hidden">
           {routes.map((r) => (
-            <Link key={r.href} href={r.href}
+            <Link key={r.href} href={r.href} aria-current={pathname === r.href ? 'page' : undefined}
               className={`block rounded-lg px-4 py-3 font-sora text-sm font-medium ${pathname === r.href ? 'bg-white/5 text-white' : 'text-white/70 hover:bg-white/5 hover:text-white'}`}>
               {r.label}
             </Link>
