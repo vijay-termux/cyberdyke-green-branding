@@ -127,13 +127,13 @@ const Navbar = () => {
       <div
         className={`w-full transition-all duration-300 ${
           scrolled
-            ? 'border-b border-emerald-900/40 bg-[#041d11]/90 backdrop-blur-md shadow-lg shadow-black/20'
-            : 'bg-[#041d11]'
+            ? 'border-b border-emerald-950/10 bg-white/95 shadow-lg shadow-slate-900/10 backdrop-blur-md'
+            : 'border-b border-emerald-950/5 bg-white/95 backdrop-blur-md'
         }`}
       >
         <div className="mx-auto flex min-h-20 max-w-[1500px] items-center gap-3 px-4 sm:px-6 xl:gap-5 lg:min-h-28">
           <Link href="/" aria-label="CyberdykeTech home" className="flex shrink-0 items-center">
-            <Logo />
+            <Logo darkText />
           </Link>
 
           <nav className="hidden min-w-0 flex-1 items-center justify-end gap-2 lg:flex xl:gap-4">
@@ -145,7 +145,7 @@ const Navbar = () => {
                   href={item.href}
                   onClick={() => setActiveTab(item.label)}
                   className={`group relative flex flex-col items-center py-2 font-inter text-[14px] font-medium transition-colors xl:text-[15px] ${
-                    isActive ? 'text-white font-semibold' : 'text-slate-300 hover:text-white'
+                    isActive ? 'text-[#0b2419] font-semibold' : 'text-slate-600 hover:text-[#0b2419]'
                   }`}
                 >
                   <span className="leading-tight text-center">{item.label}</span>
@@ -166,7 +166,7 @@ const Navbar = () => {
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 text-white lg:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-xl border border-emerald-950/15 text-[#0b2419] lg:hidden"
             aria-label="Toggle Menu"
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
@@ -175,14 +175,14 @@ const Navbar = () => {
       </div>
 
       {mobileOpen && (
-        <div className="border-b border-emerald-950 bg-[#041d11] px-6 py-6 lg:hidden">
+        <div className="border-b border-emerald-950/10 bg-white px-6 py-6 shadow-lg lg:hidden">
           <div className="flex flex-col gap-4">
             {navLinks.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
-                className="font-inter text-sm font-medium text-slate-300 hover:text-white"
+                className="font-inter text-sm font-medium text-slate-600 hover:text-[#0b2419]"
               >
                 {item.label}
               </Link>

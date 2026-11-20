@@ -76,32 +76,22 @@ const routes = [
 ]
 
 export const Nav = () => {
-  const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 30)
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
   useEffect(() => { setOpen(false) }, [pathname])
 
   return (
     <motion.nav initial={{ y: -60, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6 }}
       className="fixed left-0 right-0 top-0 z-50 px-4 pt-4">
       <div
-        className={`mx-auto flex w-full max-w-7xl items-center justify-between gap-3 rounded-2xl px-3 py-3 transition-all sm:px-5 lg:gap-4 lg:px-6 ${
-          scrolled
-            ? 'border border-emerald-200/15 bg-[#062817]/88 backdrop-blur-xl shadow-[0_18px_60px_-30px_rgba(0,0,0,0.8)]'
-            : ''
-        }`}
+        className="mx-auto flex w-full max-w-7xl items-center justify-between gap-3 rounded-2xl border border-emerald-950/5 bg-white/95 px-3 py-3 shadow-[0_8px_30px_-16px_rgba(15,23,42,0.3)] backdrop-blur-xl transition-all sm:px-5 lg:gap-4 lg:px-6"
       >
         <Link
           href="/"
           aria-label="CyberdykeTech home"
           className="flex min-w-0 shrink-0 items-center transition-transform hover:scale-[1.02]"
         >
-          <Logo compact />
+          <Logo compact darkText />
         </Link>
 
         <div className="hidden min-w-0 flex-1 items-center justify-center gap-0 min-[1200px]:flex">
@@ -109,7 +99,7 @@ export const Nav = () => {
             const active = pathname === r.href
             return (
               <Link key={r.href} href={r.href} aria-current={active ? 'page' : undefined}
-                className={`group relative whitespace-nowrap rounded-full px-2 py-2 font-sora text-[12px] font-medium transition-colors 2xl:px-2.5 2xl:text-[13px] ${active ? 'text-white' : 'text-white/70 hover:text-white'}`}>
+                className={`group relative whitespace-nowrap rounded-full px-2 py-2 font-sora text-[12px] font-medium transition-colors 2xl:px-2.5 2xl:text-[13px] ${active ? 'text-[#062817]' : 'text-slate-600 hover:text-[#0b2419]'}`}>
                 {r.label}
                 {active && <span className="absolute -bottom-0.5 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-[#34D399] shadow-[0_0_8px_#34D399]" />}
               </Link>
@@ -127,7 +117,7 @@ export const Nav = () => {
             aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={open}
             aria-controls="mobile-site-navigation"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white min-[1200px]:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-emerald-950/15 text-[#0b2419] min-[1200px]:hidden"
           >
             {open ? <X size={16} /> : <Menu size={16} />}
           </button>
@@ -135,10 +125,10 @@ export const Nav = () => {
       </div>
 
       {open && (
-        <div id="mobile-site-navigation" className="mx-auto mt-2 max-w-7xl rounded-2xl border border-emerald-200/15 bg-[#062817]/95 p-3 backdrop-blur-xl min-[1200px]:hidden">
+        <div id="mobile-site-navigation" className="mx-auto mt-2 max-w-7xl rounded-2xl border border-emerald-950/10 bg-white p-3 shadow-lg backdrop-blur-xl min-[1200px]:hidden">
           {routes.map((r) => (
             <Link key={r.href} href={r.href} aria-current={pathname === r.href ? 'page' : undefined}
-              className={`block rounded-lg px-4 py-3 font-sora text-sm font-medium ${pathname === r.href ? 'bg-white/5 text-white' : 'text-white/70 hover:bg-white/5 hover:text-white'}`}>
+              className={`block rounded-lg px-4 py-3 font-sora text-sm font-medium ${pathname === r.href ? 'bg-emerald-50 text-[#0b2419]' : 'text-slate-600 hover:bg-emerald-50 hover:text-[#0b2419]'}`}>
               {r.label}
             </Link>
           ))}
