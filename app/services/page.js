@@ -1,7 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
 import { Nav, Footer, SectionEyebrow, MagneticBtn, PageHero, CTASection, LenisProvider } from '@/components/dua/DuaShell'
-import { ArrowRight, ShieldCheck, Code2, Database, ScanSearch, RadioTower, Bug, Cloud, Network, ShieldAlert, Workflow, Compass, Lightbulb, PenLine, Rocket, TrendingUp, CheckCircle2 } from 'lucide-react'
+import { ArrowRight, ShieldCheck, Code2, Database, ScanSearch, RadioTower, Bug, Cloud, Network, ShieldAlert, Workflow, Megaphone, Search, Video, Palette, Share2, Compass, Lightbulb, PenLine, Rocket, TrendingUp, CheckCircle2 } from 'lucide-react'
 
 const serviceGroups = [
   { icon: ShieldCheck, color: 'from-emerald-500 to-teal-600', title: 'Website Security & Maintenance', desc: 'Keep websites secure, current, and performing with continuous maintenance and timely vulnerability fixes.',
@@ -24,6 +24,16 @@ const serviceGroups = [
     items: ['Security Weakness Identification', 'Risk Analysis', 'Severity Prioritization', 'Assessment Reports', 'Remediation Planning', 'Follow-up Validation'] },
   { icon: Network, color: 'from-teal-500 to-emerald-600', title: 'Network Security', desc: 'Review network security posture, configuration, and defenses against potential threats.',
     items: ['Network Assessments', 'Security Configuration Reviews', 'Exposure Analysis', 'Threat Protection Reviews', 'Network Segmentation Review', 'Improvement Recommendations'] },
+  { icon: Megaphone, color: 'from-blue-500 to-cyan-500', title: 'Digital Marketing', desc: 'Data-driven campaigns that bring real results.',
+    items: ['Campaign Strategy', 'Paid Advertising', 'Lead Generation', 'Campaign Analytics', 'Conversion Optimization'] },
+  { icon: Search, color: 'from-emerald-500 to-teal-600', title: 'SEO & Growth', desc: 'Rank higher, get found, and grow faster.',
+    items: ['Technical SEO', 'Keyword Research', 'On-page Optimization', 'Local SEO', 'Organic Growth'] },
+  { icon: Video, color: 'from-red-500 to-orange-500', title: 'Video Production', desc: 'Cinematic content that tells your story.',
+    items: ['Brand Films', 'Product Videos', 'Social Media Videos', 'Commercial Production', 'Editing & Post-production'] },
+  { icon: Palette, color: 'from-purple-500 to-fuchsia-500', title: 'Brand Strategy', desc: 'Build a brand that stands out.',
+    items: ['Brand Positioning', 'Visual Identity', 'Brand Messaging', 'Brand Guidelines', 'Creative Direction'] },
+  { icon: Share2, color: 'from-pink-500 to-rose-500', title: 'Social Media', desc: 'Engage audiences and build real connections.',
+    items: ['Social Media Strategy', 'Content Planning', 'Channel Management', 'Community Engagement', 'Performance Reporting'] },
 ]
 
 const processSteps = [
@@ -39,7 +49,7 @@ export default function ServicesPage() {
     <LenisProvider>
       <div className="min-h-screen bg-white">
         <Nav />
-        <PageHero eyebrow="Services" title={<>Solutions That Drive <span className="bg-gradient-to-r from-[#4F8CFF] to-[#1565FF] bg-clip-text text-transparent">Growth.</span></>} subtitle="Practical cybersecurity, development, and ongoing protection services to help keep your websites, applications, and infrastructure secure." />
+        <PageHero eyebrow="Services" title={<>Solutions That Drive <span className="bg-gradient-to-r from-[#4F8CFF] to-[#1565FF] bg-clip-text text-transparent">Growth.</span></>} subtitle="Integrated cybersecurity, web development, and digital growth services to protect your business and help it reach more people." />
 
         {/* Services deep list */}
         <section className="bg-white py-24">
