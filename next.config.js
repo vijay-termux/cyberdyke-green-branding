@@ -1,5 +1,6 @@
 // Keep the preview server configuration stable across route rebuilds.
 const nextConfig = {
+  distDir: process.env.NODE_ENV === 'development' ? '.next-dev' : '.next',
   output: 'standalone',
   images: {
     unoptimized: true,
