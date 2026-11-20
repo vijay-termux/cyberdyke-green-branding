@@ -20,7 +20,7 @@ export default function ContactPage() {
     e.preventDefault()
     setStatus('sending')
     try {
-      const res = await fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...form, message: `[${form.service} · ${form.budget}] ${form.phone ? '· ' + form.phone : ''}\n${form.message}` }) })
+      const res = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ fullName: form.name, email: form.email, phone: form.phone, company: form.company, service: form.service, budget: form.budget, message: form.message, website: '' }) })
       if (res.ok) { setStatus('sent'); setForm({ name: '', email: '', phone: '', company: '', service: '', budget: '', message: '' }) } else setStatus('error')
     } catch { setStatus('error') }
   }
@@ -47,8 +47,8 @@ export default function ContactPage() {
               {/* Info */}
               <div className="lg:col-span-2 space-y-3">
                 {[
-                  { icon: <Mail size={16} />, label: 'Email', value: 'duadigital.in@gmail.com' },
-                  { icon: <Phone size={16} />, label: 'Phone', value: '+91 93918 56552' },
+                  { icon: <Mail size={16} />, label: 'Email', value: 'info@cyberdyketech.com' },
+                  { icon: <Phone size={16} />, label: 'Phone', value: '+91 83414 96002' },
                   { icon: <MessageCircle size={16} />, label: 'WhatsApp', value: '+91 83414 96002' },
                   { icon: <MapPin size={16} />, label: 'Location', value: 'Hyderabad, India' },
                   { icon: <Clock size={16} />, label: 'Business Hours', value: 'Mon–Sat · 10am–7pm IST' },
@@ -102,7 +102,7 @@ export default function ContactPage() {
                     <select value={form.service} onChange={(e) => setForm({ ...form, service: e.target.value })}
                       className="w-full rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 font-inter text-[13px] text-white outline-none focus:border-[#4F8CFF]">
                       <option value="" className="bg-[#050A1F]">Select a Service</option>
-                      {['Digital Marketing', 'Website Design', 'SEO & Growth', 'Video Production', 'Branding', 'Social Media', 'Performance Marketing', 'Content Creation', 'Other'].map(s => <option key={s} className="bg-[#050A1F]">{s}</option>)}
+                      {['Cybersecurity', 'Penetration Testing', 'Vulnerability Assessment', 'Website Security Audit', 'Network Security', 'Cloud Security', 'Digital Marketing', 'Social Media Marketing', 'Website Development', 'App Development', 'Training & Internship', 'Other'].map(s => <option key={s} className="bg-[#050A1F]">{s}</option>)}
                     </select>
                   </div>
                   <div>
