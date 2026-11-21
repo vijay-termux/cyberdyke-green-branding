@@ -1,26 +1,6 @@
 'use client'
-import { useEffect, useRef } from 'react'
 
 export default function Scene3D() {
-  const wrapRef = useRef(null)
-  const duaRef = useRef(null)
-
-  useEffect(() => {
-    let raf, mx = 0, my = 0, rx = 0, ry = 0
-    const onMove = (e) => {
-      mx = (e.clientX / window.innerWidth - 0.5) * 24
-      my = (e.clientY / window.innerHeight - 0.5) * 16
-    }
-    window.addEventListener('mousemove', onMove)
-    const tick = () => {
-      rx += (my - rx) * 0.06
-      ry += (mx - ry) * 0.06
-      if (duaRef.current) duaRef.current.style.transform = `rotateX(${-rx}deg) rotateY(${ry}deg)`
-      raf = requestAnimationFrame(tick)
-    }
-    tick()
-    return () => { window.removeEventListener('mousemove', onMove); cancelAnimationFrame(raf) }
-  }, [])
 
   const particles = Array.from({ length: 50 }).map((_, i) => ({
     x: (i * 137.5) % 100,
@@ -31,7 +11,7 @@ export default function Scene3D() {
   }))
 
   return (
-    <div ref={wrapRef} className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden">
+    <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden">
       {/* Background arc / cosmic glow */}
       <div className="absolute left-1/2 top-1/2 h-[130%] w-[130%] -translate-x-1/2 -translate-y-1/2">
         <div className="absolute inset-0 rounded-full" style={{
@@ -66,63 +46,8 @@ export default function Scene3D() {
         ))}
       </div>
 
-      {/* 3D DUA text */}
-      <div className="relative z-10 flex items-center justify-center" style={{ perspective: '1200px' }}>
-        <div ref={duaRef} className="relative" style={{ transformStyle: 'preserve-3d', transition: 'transform 0.15s ease-out' }}>
-          <div className="relative flex items-center gap-1 select-none">
-            {['D', 'U', 'A'].map((ch, i) => (
-              <span
-                key={i}
-                className="dua-letter font-sora"
-                style={{
-                  fontSize: 'clamp(120px, 20vw, 260px)',
-                  fontWeight: 900,
-                  lineHeight: 1,
-                  letterSpacing: '-0.04em',
-                  background: 'linear-gradient(160deg, #FFFFFF 0%, #A9C7FF 25%, #1565FF 55%, #0B3A99 90%)',
-                  WebkitBackgroundClip: 'text',
-                  backgroundClip: 'text',
-                  color: 'transparent',
-                  textShadow: '0 0 60px rgba(21,101,255,0.4)',
-                  filter: 'drop-shadow(0 20px 40px rgba(21,101,255,0.4)) drop-shadow(0 0 30px rgba(79,140,255,0.5))',
-                  transform: `translateZ(${i === 1 ? 40 : 20}px)`,
-                  animation: `dua-hover-${i} 6s ease-in-out infinite`,
-                }}
-              >
-                {ch}
-              </span>
-            ))}
-          </div>
-          {/* Reflection */}
-          <div
-            className="pointer-events-none absolute inset-x-0 top-full flex items-start justify-center opacity-25"
-            style={{
-              transform: 'scaleY(-1)',
-              maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.5), transparent 60%)',
-              WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.5), transparent 60%)',
-            }}
-          >
-            <span className="font-sora" style={{
-              fontSize: 'clamp(120px, 20vw, 260px)', fontWeight: 900, lineHeight: 1,
-              background: 'linear-gradient(180deg, #1565FF, transparent)',
-              WebkitBackgroundClip: 'text', color: 'transparent',
-            }}>DUA</span>
-          </div>
+      <div className="absolute right-[12%] top-1/2 h-72 w-72 -translate-y-1/2 rounded-full bg-[#1565FF]/10 blur-3xl" aria-hidden="true" />
 
-          {/* Swoosh/arrow accent */}
-          <svg className="absolute -left-8 -bottom-10 w-full" viewBox="0 0 400 80" style={{ transform: 'translateZ(30px)' }}>
-            <defs>
-              <linearGradient id="swoosh" x1="0" x2="1">
-                <stop offset="0%" stopColor="#4F8CFF" />
-                <stop offset="100%" stopColor="#1565FF" />
-              </linearGradient>
-            </defs>
-            <path d="M 20 60 Q 200 -10 380 40" stroke="url(#swoosh)" strokeWidth="6" fill="none" strokeLinecap="round"
-              style={{ filter: 'drop-shadow(0 0 12px #4F8CFF)' }} />
-            <polygon points="380,40 365,25 370,50" fill="#4F8CFF" style={{ filter: 'drop-shadow(0 0 8px #4F8CFF)' }} />
-          </svg>
-        </div>
-      </div>
 
       <style jsx>{`
         @keyframes dua-float {

@@ -1,5 +1,6 @@
 // Keep the preview server configuration stable across route rebuilds.
 const nextConfig = {
+  distDir: process.env.NODE_ENV === 'development' ? '.next-dev' : '.next',
   output: 'standalone',
   images: {
     unoptimized: true,
@@ -29,11 +30,12 @@ const nextConfig = {
       {
         source: "/(.*)",
         headers: [
-          { key: "X-Frame-Options", value: "ALLOWALL" },
-          { key: "Content-Security-Policy", value: "frame-ancestors *;" },
-          { key: "Access-Control-Allow-Origin", value: process.env.CORS_ORIGINS || "*" },
-          { key: "Access-Control-Allow-Methods", value: "GET, POST, PUT, DELETE, OPTIONS" },
-          { key: "Access-Control-Allow-Headers", value: "*" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Strict-Transport-Security", value: "max-age=63072000" },
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+          { key: "Content-Security-Policy-Report-Only", value: "default-src 'self'; img-src 'self' data: https: blob:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://maps.googleapis.com; connect-src 'self' https:; frame-src https://maps.google.com https://www.google.com; object-src 'none'; base-uri 'self'; frame-ancestors 'self'" },
         ],
       },
     ];

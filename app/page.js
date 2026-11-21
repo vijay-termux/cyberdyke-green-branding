@@ -112,14 +112,14 @@ const Navbar = () => {
   }, [])
 
   const navLinks = [
-    { label: 'Home', href: '#home' },
-    { label: 'About Us', href: '#about-us' },
-    { label: 'Services', href: '#services' },
+    { label: 'Home', href: '/' },
+    { label: 'About Us', href: '/about' },
+    { label: 'Services', href: '/services' },
     { label: 'Training', href: '/training' },
     { label: 'Internships', href: '/internships' },
-    { label: 'Certificate Verification', href: '/verify' },
+    { label: 'Certificate Verification', href: '/certificate-verification' },
     { label: 'Careers', href: '/careers' },
-    { label: 'Contact Us', href: '#contact' },
+    { label: 'Contact Us', href: '/contact' },
   ]
 
   return (
@@ -127,16 +127,16 @@ const Navbar = () => {
       <div
         className={`w-full transition-all duration-300 ${
           scrolled
-            ? 'border-b border-emerald-900/40 bg-[#041d11]/90 backdrop-blur-md shadow-lg shadow-black/20'
-            : 'bg-[#041d11]'
+            ? 'border-b border-emerald-950/10 bg-white/95 shadow-lg shadow-slate-900/10 backdrop-blur-md'
+            : 'border-b border-emerald-950/5 bg-white/95 backdrop-blur-md'
         }`}
       >
-        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
-          <Link href="/" className="flex items-center gap-2">
-            <Logo />
+        <div className="mx-auto flex min-h-20 max-w-[1500px] items-center gap-3 px-4 sm:px-6 xl:gap-5 lg:min-h-28">
+          <Link href="/" aria-label="CyberdykeTech home" className="flex shrink-0 items-center">
+            <Logo darkText />
           </Link>
 
-          <nav className="hidden items-center gap-6 xl:gap-8 lg:flex">
+          <nav className="hidden min-w-0 flex-1 items-center justify-end gap-2 lg:flex xl:gap-4">
             {navLinks.map((item) => {
               const isActive = activeTab === item.label
               return (
@@ -144,8 +144,8 @@ const Navbar = () => {
                   key={item.label}
                   href={item.href}
                   onClick={() => setActiveTab(item.label)}
-                  className={`group relative flex flex-col items-center py-2 font-inter text-[13px] font-medium transition-colors ${
-                    isActive ? 'text-white font-semibold' : 'text-slate-300 hover:text-white'
+                  className={`group relative flex flex-col items-center py-2 font-inter text-[14px] font-medium transition-colors xl:text-[15px] ${
+                    isActive ? 'text-[#0b2419] font-semibold' : 'text-slate-600 hover:text-[#0b2419]'
                   }`}
                 >
                   <span className="leading-tight text-center">{item.label}</span>
@@ -157,18 +157,16 @@ const Navbar = () => {
             })}
           </nav>
 
-          <div className="hidden lg:flex items-center">
-            <Link href="#contact">
-              <button className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#00D084] to-[#00B871] px-5 py-2.5 font-sora text-[13px] font-semibold text-white shadow-[0_0_20px_rgba(0,208,132,0.4)] transition-all duration-300 hover:shadow-[0_0_28px_rgba(0,208,132,0.7)] hover:scale-[1.02]">
-                Get Free Consultation
-                <ArrowUpRight size={15} />
-              </button>
+          <div className="hidden shrink-0 items-center lg:flex">
+            <Link href="/contact" className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-full bg-gradient-to-r from-[#00D084] to-[#00B871] px-3 py-3 font-sora text-[12px] font-semibold text-white shadow-[0_0_20px_rgba(0,208,132,0.4)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_28px_rgba(0,208,132,0.7)] xl:px-4 xl:text-[13px]">
+              Get Free Consultation
+              <ArrowUpRight size={15} />
             </Link>
           </div>
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 text-white lg:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-xl border border-emerald-950/15 text-[#0b2419] lg:hidden"
             aria-label="Toggle Menu"
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
@@ -177,22 +175,20 @@ const Navbar = () => {
       </div>
 
       {mobileOpen && (
-        <div className="border-b border-emerald-950 bg-[#041d11] px-6 py-6 lg:hidden">
+        <div className="border-b border-emerald-950/10 bg-white px-6 py-6 shadow-lg lg:hidden">
           <div className="flex flex-col gap-4">
             {navLinks.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
-                className="font-inter text-sm font-medium text-slate-300 hover:text-white"
+                className="font-inter text-sm font-medium text-slate-600 hover:text-[#0b2419]"
               >
                 {item.label}
               </Link>
             ))}
-            <Link href="#contact" onClick={() => setMobileOpen(false)} className="mt-2">
-              <button className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#00D084] to-[#00B871] py-3 text-sm font-semibold text-white">
-                Get Free Consultation <ArrowUpRight size={15} />
-              </button>
+            <Link href="/contact" onClick={() => setMobileOpen(false)} className="mt-2 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#00D084] to-[#00B871] py-3 text-sm font-semibold text-white">
+              Get Free Consultation <ArrowUpRight size={15} />
             </Link>
           </div>
         </div>

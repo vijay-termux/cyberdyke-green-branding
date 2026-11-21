@@ -1,23 +1,39 @@
 'use client'
 import { motion } from 'framer-motion'
 import { Nav, Footer, SectionEyebrow, MagneticBtn, PageHero, CTASection, LenisProvider } from '@/components/dua/DuaShell'
-import { ArrowRight, Megaphone, MonitorSmartphone, Search, Video, Palette, Share2, Target, PenLine, Compass, Lightbulb, Rocket, TrendingUp, CheckCircle2 } from 'lucide-react'
+import { ArrowRight, ShieldCheck, Code2, Database, ScanSearch, RadioTower, Bug, Cloud, Network, ShieldAlert, Workflow, Megaphone, Search, Video, Palette, Share2, Compass, Lightbulb, PenLine, Rocket, TrendingUp, CheckCircle2 } from 'lucide-react'
 
 const serviceGroups = [
-  { icon: Megaphone, color: 'from-blue-500 to-cyan-500', title: 'Digital Marketing', desc: 'End-to-end data-driven campaigns across every meaningful channel.',
-    items: ['Meta Ads', 'Google Ads', 'Lead Generation', 'Remarketing', 'Performance Marketing', 'Conversion Optimization', 'Analytics', 'Monthly Reports'] },
-  { icon: MonitorSmartphone, color: 'from-indigo-500 to-blue-600', title: 'Website Design', desc: 'Beautiful, blazing-fast websites engineered for conversion.',
-    items: ['Corporate Websites', 'Landing Pages', 'E-commerce', 'Portfolio Websites', 'Custom Web Applications', 'Website Maintenance', 'Speed Optimization', 'Responsive Design'] },
-  { icon: Search, color: 'from-emerald-500 to-teal-600', title: 'SEO', desc: 'Rank higher, get found, and win compounding organic growth.',
-    items: ['Technical SEO', 'Local SEO', 'On-page SEO', 'Off-page SEO', 'Keyword Research', 'Content Optimization', 'Google Business Profile', 'SEO Audits'] },
-  { icon: Video, color: 'from-red-500 to-orange-500', title: 'Video Production', desc: 'Cinematic content that moves audiences — and metrics.',
-    items: ['Commercial Ads', 'Corporate Films', 'Product Videos', 'Social Media Reels', 'YouTube Videos', 'Drone Videos', 'Motion Graphics', 'Color Grading'] },
-  { icon: Palette, color: 'from-purple-500 to-fuchsia-500', title: 'Branding', desc: 'Iconic identity systems that stay relevant across the decade.',
-    items: ['Logo Design', 'Brand Identity', 'Brand Strategy', 'Packaging', 'Brand Guidelines', 'Stationery', 'Social Branding'] },
-  { icon: Share2, color: 'from-pink-500 to-rose-500', title: 'Social Media', desc: 'Community-led content that builds real cultural presence.',
-    items: ['Instagram Management', 'Facebook Marketing', 'LinkedIn Marketing', 'YouTube Marketing', 'Content Calendar', 'Creative Design', 'Community Management'] },
-  { icon: PenLine, color: 'from-amber-500 to-orange-500', title: 'Content Creation', desc: 'Reels, shorts, photography, ad creatives — for the algorithm.',
-    items: ['Photography', 'Reels', 'Product Shoots', 'Creative Copywriting', 'Ad Creatives', 'Graphic Design', 'AI Content'] },
+  { icon: ShieldCheck, color: 'from-emerald-500 to-teal-600', title: 'Website Security & Maintenance', desc: 'Keep websites secure, current, and performing with continuous maintenance and timely vulnerability fixes.',
+    items: ['Continuous Security Checks', 'Software & Dependency Updates', 'Vulnerability Fixes', 'Performance Maintenance', 'Security Configuration Reviews', 'Ongoing Website Support'] },
+  { icon: Code2, color: 'from-indigo-500 to-blue-600', title: 'Web Development', desc: 'Professional, responsive websites built with security, accessibility, and performance in mind.',
+    items: ['Responsive Websites', 'Secure Web Applications', 'Frontend Development', 'Custom Website Features', 'Accessibility Improvements', 'Performance Optimization'] },
+  { icon: Database, color: 'from-blue-500 to-cyan-500', title: 'Backend Development & Maintenance', desc: 'Reliable server-side systems, databases, and integrations designed to support your business.',
+    items: ['Backend Systems', 'Database Maintenance', 'API Integrations', 'Server-side Support', 'Data Validation', 'Service Reliability'] },
+  { icon: ScanSearch, color: 'from-purple-500 to-fuchsia-500', title: 'Code Review & Security Auditing', desc: 'Analyze source code to identify security vulnerabilities, coding errors, and performance issues.',
+    items: ['Source-code Analysis', 'Security Vulnerability Reviews', 'Coding Error Detection', 'Dependency Review', 'Performance Findings', 'Prioritized Recommendations'] },
+  { icon: RadioTower, color: 'from-amber-500 to-orange-500', title: '24/7 SOC Monitoring', desc: 'Continuous security operations monitoring for threat detection, alerts, and incident response.',
+    items: ['24/7 Security Monitoring', 'Threat Detection', 'Security Alerts', 'Incident Triage', 'Response Coordination', 'Monitoring Reports'] },
+  { icon: Bug, color: 'from-red-500 to-orange-500', title: 'Penetration Testing', desc: 'Authorized security testing to identify and validate vulnerabilities within an agreed scope.',
+    items: ['Website Testing', 'Application Testing', 'Network Testing', 'System Assessments', 'Vulnerability Validation', 'Remediation Guidance'] },
+  { icon: Cloud, color: 'from-sky-500 to-blue-600', title: 'Cloud Security', desc: 'Assess cloud infrastructure configuration, access controls, and protective measures.',
+    items: ['Cloud Configuration Reviews', 'Infrastructure Assessments', 'Access Management', 'Identity & Permission Reviews', 'Cloud Security Controls', 'Risk Recommendations'] },
+  { icon: Workflow, color: 'from-pink-500 to-rose-500', title: 'API Security & Endpoint Testing', desc: 'Assess API endpoints, authentication, and access controls to uncover security weaknesses.',
+    items: ['API Endpoint Assessments', 'Authentication Testing', 'Access-control Checks', 'Input Validation Reviews', 'Abuse-case Testing', 'Vulnerability Reporting'] },
+  { icon: ShieldAlert, color: 'from-orange-500 to-red-600', title: 'Vulnerability Assessment', desc: 'Identify, analyze, prioritize, and report security weaknesses across your environment.',
+    items: ['Security Weakness Identification', 'Risk Analysis', 'Severity Prioritization', 'Assessment Reports', 'Remediation Planning', 'Follow-up Validation'] },
+  { icon: Network, color: 'from-teal-500 to-emerald-600', title: 'Network Security', desc: 'Review network security posture, configuration, and defenses against potential threats.',
+    items: ['Network Assessments', 'Security Configuration Reviews', 'Exposure Analysis', 'Threat Protection Reviews', 'Network Segmentation Review', 'Improvement Recommendations'] },
+  { icon: Megaphone, color: 'from-blue-500 to-cyan-500', title: 'Digital Marketing', desc: 'Data-driven campaigns that bring real results.',
+    items: ['Campaign Strategy', 'Paid Advertising', 'Lead Generation', 'Campaign Analytics', 'Conversion Optimization'] },
+  { icon: Search, color: 'from-emerald-500 to-teal-600', title: 'SEO & Growth', desc: 'Rank higher, get found, and grow faster.',
+    items: ['Technical SEO', 'Keyword Research', 'On-page Optimization', 'Local SEO', 'Organic Growth'] },
+  { icon: Video, color: 'from-red-500 to-orange-500', title: 'Video Production', desc: 'Cinematic content that tells your story.',
+    items: ['Brand Films', 'Product Videos', 'Social Media Videos', 'Commercial Production', 'Editing & Post-production'] },
+  { icon: Palette, color: 'from-purple-500 to-fuchsia-500', title: 'Brand Strategy', desc: 'Build a brand that stands out.',
+    items: ['Brand Positioning', 'Visual Identity', 'Brand Messaging', 'Brand Guidelines', 'Creative Direction'] },
+  { icon: Share2, color: 'from-pink-500 to-rose-500', title: 'Social Media', desc: 'Engage audiences and build real connections.',
+    items: ['Social Media Strategy', 'Content Planning', 'Channel Management', 'Community Engagement', 'Performance Reporting'] },
 ]
 
 const processSteps = [
@@ -33,7 +49,7 @@ export default function ServicesPage() {
     <LenisProvider>
       <div className="min-h-screen bg-white">
         <Nav />
-        <PageHero eyebrow="Services" title={<>Solutions That Drive <span className="bg-gradient-to-r from-[#4F8CFF] to-[#1565FF] bg-clip-text text-transparent">Growth.</span></>} subtitle="From strategy to execution, we help brands dominate the digital world with 60+ specialized capabilities under one roof." />
+        <PageHero eyebrow="Services" title={<>Solutions That Drive <span className="bg-gradient-to-r from-[#4F8CFF] to-[#1565FF] bg-clip-text text-transparent">Growth.</span></>} subtitle="Integrated cybersecurity, web development, and digital growth services to protect your business and help it reach more people." />
 
         {/* Services deep list */}
         <section className="bg-white py-24">
