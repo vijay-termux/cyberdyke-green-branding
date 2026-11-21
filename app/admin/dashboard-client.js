@@ -3,7 +3,7 @@
 import useSWR from 'swr'
 import { useMemo, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { ArrowDownToLine, BriefcaseBusiness, CheckCircle2, ChevronLeft, ChevronRight, FileBadge, GraduationCap, LayoutDashboard, LogOut, Mail, Search, Users } from 'lucide-react'
+import { ArrowDownToLine, BriefcaseBusiness, CheckCircle2, ChevronLeft, ChevronRight, FileBadge, GraduationCap, LayoutDashboard, LogOut, Mail, PenLine, Search, Users } from 'lucide-react'
 
 const fetcher = async url => {
   const response = await fetch(url, { cache: 'no-store' })
@@ -140,6 +140,7 @@ export default function AdminDashboard({ email }) {
       <a href="/" className="flex items-center gap-3 px-2"><span className="flex size-10 items-center justify-center rounded-xl bg-white/10 font-sora font-bold text-emerald-300">C</span><span><span className="block font-sora text-sm font-bold">CyberdykeTech</span><span className="text-xs text-emerald-100/60">Owner workspace</span></span></a>
       <nav aria-label="Admin navigation" className="mt-7 flex gap-2 overflow-x-auto pb-1 md:flex-1 md:flex-col md:overflow-visible">
         {sections.map(({ id, label, icon: Icon }) => <button key={id} onClick={() => selectSection(id)} aria-current={active === id ? 'page' : undefined} className={`flex shrink-0 items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm transition ${active === id ? 'bg-emerald-400/15 font-semibold text-emerald-200' : 'text-emerald-50/75 hover:bg-white/5 hover:text-white'}`}><Icon size={17} /><span>{label}</span></button>)}
+        <a href="/admin/website-content" className="flex shrink-0 items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm text-emerald-50/75 transition hover:bg-white/5 hover:text-white"><PenLine size={17} /><span>Website content</span></a>
       </nav>
       <div className="mt-5 hidden border-t border-white/10 pt-4 md:block"><p className="truncate px-2 text-xs text-emerald-100/65">{email}</p><button onClick={logout} className="mt-3 flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-emerald-50/80 hover:bg-white/5"><LogOut size={17} />Sign out</button></div>
       <button onClick={logout} className="mt-3 flex items-center gap-2 rounded-xl px-3 py-2.5 text-sm text-emerald-50/80 hover:bg-white/5 md:hidden"><LogOut size={17} />Sign out</button>

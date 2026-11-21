@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import useSWR from 'swr'
 import Link from 'next/link'
 import { motion, useInView, useMotionValue, useSpring } from 'framer-motion'
 import dynamic from 'next/dynamic'
@@ -502,22 +503,39 @@ const projects = [
   },
 ]
 
-const Work = () => (
+const homepageContentFetcher = async (url) => {
+  const response = await fetch(url, { cache: 'no-store' })
+  if (!response.ok) throw new Error('Unable to refresh homepage content.')
+  return response.json()
+}
+
+const Work = () => {
+  const fallbackContent = {
+    heading: 'Work That Speaks\nFor Itself.',
+    buttonText: 'View All Projects',
+    buttonUrl: '/work',
+  }
+  const { data } = useSWR('/api/homepage-content', homepageContentFetcher, {
+    fallbackData: { publishedContent: fallbackContent },
+    refreshInterval: 15000,
+    revalidateOnFocus: true,
+  })
+  const content = data?.publishedContent || fallbackContent
+
+  return (
   <section id="work" className="relative overflow-hidden bg-[#041d11] py-24">
     <div className="relative mx-auto max-w-7xl px-6">
       <div className="mb-10 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
         <div>
           <SectionEyebrow dark>Our Work</SectionEyebrow>
-          <h2 className="mt-3 font-sora text-4xl font-black leading-[1.05] tracking-[-0.02em] text-white md:text-5xl">
-            Work That Speaks
-            <br />
-            For <span className="text-[#34D399]">Itself.</span>
+          <h2 className="mt-3 whitespace-pre-line font-sora text-4xl font-black leading-[1.05] tracking-[-0.02em] text-white md:text-5xl">
+            {content.heading}
           </h2>
           <Link
-            href="/work"
+            href={content.buttonUrl || '/work'}
             className="mt-6 inline-flex items-center gap-2 font-sora text-[13px] font-semibold text-[#34D399] hover:text-white"
           >
-            View All Projects <ArrowRight size={14} />
+            {content.buttonText || 'View All Projects'} <ArrowRight size={14} />
           </Link>
         </div>
         <div className="flex gap-2">
@@ -576,7 +594,8 @@ const Work = () => (
       </div>
     </div>
   </section>
-)
+  )
+}
 
 // ---------- Counter & Why DUA ----------
 const Counter = ({ to, suffix = '', duration = 2 }) => {
