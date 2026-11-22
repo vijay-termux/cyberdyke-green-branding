@@ -468,22 +468,58 @@ const Services = () => (
 // ---------- Work ----------
 const projects = [
   {
-    title: 'Duroflex',
-    cat: 'Performance Campaign',
-    metric: '+320%',
-    mtag: 'Revenue Growth',
-    bg: 'from-emerald-950 via-teal-900 to-emerald-900',
-    img: '/work-photos/duroflex.jpg',
-    slug: 'duroflex',
+    title: 'CraftVasi Interiors',
+    cat: 'Content Creation',
+    metric: '100+ Tips',
+    mtag: 'Creative, Website & Backend',
+    bg: 'from-slate-900 via-blue-950 to-red-950',
+    img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/screencapture-instagram-craftvasi-interiors-2026-11-20-21_41_02.png-uE3Kt7qAlaSnUL9SdsTK7BjAfgQDcx.webp',
+    slug: 'craftvasi-interiors',
+  },
+  {
+    title: 'IRA Beauty Academy',
+    cat: 'Content Creation',
+    metric: 'Creative',
+    mtag: 'Social Media & Course Marketing',
+    bg: 'from-amber-800 via-yellow-700 to-stone-900',
+    img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-YTvejzUxSr1drAdy02Q9y4g3XEvAJL.png',
+    slug: 'ira-beauty-academy',
+  },
+  {
+    title: 'Dr. Forum',
+    cat: 'Video SEO & Meta Ads',
+    metric: 'Video SEO',
+    mtag: 'Meta Ads Campaign Management',
+    bg: 'from-sky-900 via-blue-800 to-slate-950',
+    img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-883aDMLXHFrE4U4CuH5LoUh4PLefGX.png',
+    slug: 'dr-forum',
+  },
+  {
+    title: 'makeupartistpranitha',
+    cat: 'Social Media Branding',
+    metric: 'Content Generation',
+    mtag: 'Social Content & Ad Campaigns',
+    bg: 'from-purple-950 via-fuchsia-950 to-black',
+    img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-EfobyxgcCI2XfU5PKeLUDwf85O6xKX.png',
+    slug: 'pranitha-makeup-artist',
   },
   {
     title: "Mother's Lap",
     cat: 'Sleep & Wellness',
-    metric: 'Brand',
-    mtag: 'Growth Campaign',
+    metric: 'Instagram',
+    mtag: 'Content & Brand',
     bg: 'from-teal-950 via-emerald-900 to-green-950',
-    img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Hcs1TGz0VH5fNOUzt6rWruITjBen5L.png',
+    img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-wayqxySqcfOXG5kyCOfrokBHTEGHXK.png',
     slug: 'mothers-lap',
+  },
+  {
+    title: 'VRPNM',
+    cat: 'Website Design',
+    metric: 'vrpnm.com',
+    mtag: 'Website Design & Development',
+    bg: 'from-slate-900 via-emerald-950 to-slate-900',
+    img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-RvAzxQfcItWGIo4H4cd2w0R0vHIx86.png',
+    slug: 'vrnpm',
   },
   {
     title: 'Crocodile',
@@ -597,7 +633,7 @@ const Work = () => {
   )
 }
 
-// ---------- Counter & Why DUA ----------
+// ---------- Counter & Why CyberdykeTech ----------
 const Counter = ({ to, suffix = '', duration = 2 }) => {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-40px' })
@@ -624,12 +660,12 @@ const Counter = ({ to, suffix = '', duration = 2 }) => {
   )
 }
 
-const WhyDUA = () => (
+const WhyCyberdykeTech = () => (
   <section className="relative bg-white py-24">
     <div className="mx-auto max-w-7xl px-6">
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-center">
         <div className="lg:col-span-4">
-          <SectionEyebrow>Why DUA</SectionEyebrow>
+          <SectionEyebrow>Why CyberdykeTech</SectionEyebrow>
           <h2 className="mt-3 font-sora text-4xl font-black leading-[1.05] tracking-[-0.02em] text-[#0b2419] md:text-5xl">
             We Don't Do Average.
             <br />
@@ -733,7 +769,7 @@ const About = () => (
             Real <span className="text-[#34D399]">Business Results.</span>
           </h2>
           <p className="mt-5 max-w-lg font-inter text-[14px] leading-relaxed text-white/70">
-            DUA (CyberdykeTech) is an integrated agency specializing in cybersecurity architecture, bespoke software
+            CyberdykeTech is an integrated agency specializing in cybersecurity architecture, bespoke software
             engineering, and high-impact digital marketing. We merge creative vision with rigorous technological
             foundations.
           </p>
@@ -855,7 +891,7 @@ const testimonials = [
   {
     name: 'Rohit Sharma',
     role: 'Founder, Duroflex',
-    quote: 'DUA transformed our online presence. Their strategy and execution are outstanding!',
+    quote: 'CyberdykeTech transformed our online presence. Their strategy and execution are outstanding!',
     color: 'from-orange-400 to-red-500',
     init: 'RS',
   },
@@ -869,7 +905,7 @@ const testimonials = [
   {
     name: 'Vikram Mehta',
     role: 'CEO, SleepyCat',
-    quote: 'Our website and brand look world-class now. Amazing experience working with DUA!',
+    quote: 'Our website and brand look world-class now. Amazing experience working with CyberdykeTech!',
     color: 'from-blue-500 to-cyan-500',
     init: 'VM',
   },
@@ -1068,7 +1104,7 @@ const Contact = () => {
             <div className="mt-8 space-y-3">
               {[
                 { icon: <Phone size={14} />, text: '+91 93918 56552' },
-                { icon: <Mail size={14} />, text: 'duadigital.in@gmail.com' },
+                { icon: <Mail size={14} />, text: 'info@cyberdyketech.com' },
                 { icon: <MapPin size={14} />, text: 'Hyderabad, India' },
               ].map((c, i) => (
                 <div key={i} className="flex items-center gap-3">
@@ -1212,7 +1248,7 @@ export default function App() {
           <TrustBar />
           <Services />
           <Work />
-          <WhyDUA />
+          <WhyCyberdykeTech />
           <About />
           <Process />
           <Testimonials />

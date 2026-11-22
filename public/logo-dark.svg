@@ -6,8 +6,8 @@
     </linearGradient>
   </defs>
   <g font-family="Sora, Inter, sans-serif" font-weight="900">
-    <text x="6" y="36" font-size="34" letter-spacing="-1" fill="#0A2A6E">DUA</text>
-    <circle cx="90" cy="18" r="3.2" fill="url(#dua-blue-d)"/>
+    <text x="6" y="36" font-size="16" letter-spacing="-1" fill="#0A2A6E">CyberdykeTech</text>
+    <circle cx="207" cy="18" r="3.2" fill="url(#dua-blue-d)"/>
   </g>
-  <text x="6" y="50" font-family="Sora, Inter, sans-serif" font-size="7" font-weight="700" letter-spacing="3.2" fill="#1565FF">DIGITAL UNITED AGENCY</text>
+  <text x="6" y="50" font-family="Sora, Inter, sans-serif" font-size="7" font-weight="700" letter-spacing="3.2" fill="#1565FF">SECURE. DEFEND. GROW.</text>
 </svg>

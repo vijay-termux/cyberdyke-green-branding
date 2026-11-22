@@ -12,7 +12,7 @@ export default function CaseStudyPage({ params }) {
   const cs = caseStudies[slug]
   if (!cs) return notFound()
 
-  const otherKeys = Object.keys(caseStudies).filter(k => k !== slug).slice(0, 3)
+  const otherKeys = Object.keys(caseStudies).filter(k => k !== slug && k !== 'duroflex').slice(0, 3)
 
   return (
     <LenisProvider>
@@ -61,6 +61,16 @@ export default function CaseStudyPage({ params }) {
             </div>
           </div>
         </section>
+
+        {cs.website && (
+          <section className="bg-white pt-8">
+            <div className="mx-auto max-w-6xl px-6">
+              <a href={cs.website} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-[#E5EAF3] px-5 py-3 font-sora text-sm font-semibold text-[#0A2A6E] transition hover:border-[#1565FF] hover:text-[#1565FF]">
+                Visit {cs.title} online <ArrowUpRight size={15} />
+              </a>
+            </div>
+          </section>
+        )}
 
         {/* Challenge / Solution */}
         <section className="bg-white py-24">
@@ -111,7 +121,7 @@ export default function CaseStudyPage({ params }) {
               {cs.gallery.map((src, i) => (
                 <motion.div key={i} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.08 }}
                   className={`overflow-hidden rounded-2xl border border-[#E5EAF3] ${i === 0 ? 'md:col-span-2 md:row-span-1' : ''}`}>
-                  <img src={src} alt="" className="h-full w-full object-cover transition-transform duration-1000 hover:scale-105" />
+                  <img src={src} alt={`${cs.title} project image ${i + 1}`} className="h-full w-full object-cover transition-transform duration-1000 hover:scale-105" />
                 </motion.div>
               ))}
             </div>
