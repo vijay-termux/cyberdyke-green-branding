@@ -17,6 +17,7 @@ export async function PATCH(request, { params }) {
     const body = await request.json()
     const update = {}
     if (typeof body.status === 'string' && body.status.length <= 40) update.status = body.status
+    if (type === 'students' && ['public', 'private'].includes(body.visibility)) update.visibility = body.visibility
     if (typeof body.privateNotes === 'string') update.privateNotes = body.privateNotes.trim().slice(0, 5000)
     if (!Object.keys(update).length) return NextResponse.json({ error: 'No valid changes supplied.' }, { status: 400 })
     if (table.updatedAt) update.updatedAt = new Date()

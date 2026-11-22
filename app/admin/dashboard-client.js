@@ -2,6 +2,7 @@
 
 import useSWR from 'swr'
 import { useMemo, useState } from 'react'
+import RecordCreateForm from './record-create-form'
 import { useRouter } from 'next/navigation'
 import { ArrowDownToLine, BriefcaseBusiness, CheckCircle2, ChevronLeft, ChevronRight, FileBadge, GraduationCap, LayoutDashboard, LogOut, Mail, PenLine, Search, Users } from 'lucide-react'
 
@@ -50,6 +51,8 @@ function RecordCard({ record, active, savingId, updateRecord }) {
         <h2 className="font-semibold text-[#10281c]">{name}</h2>
         <p className="mt-1 break-all text-sm text-slate-500">{detail}</p>
         <p className="mt-1 text-xs text-slate-400">{formatDate(record.createdAt || record.issuedOn)}{record.phone ? ` · ${record.phone}` : ''}</p>
+        {active === 'students' ? <div className="mt-3 space-y-1 text-sm text-slate-600"><p>{record.education?.summary || 'Education not added'}</p><p>{record.training?.summary || 'Training not added'}</p>{record.skills?.length ? <p><span className="font-medium text-slate-700">Skills: </span>{record.skills.join(', ')}</p> : null}<p>Website visibility: {record.visibility}</p></div> : null}
+        {active === 'certificates' && record.pdfPath ? <a href={`/api/certificate-verification/document?id=${encodeURIComponent(record.certificateId)}`} className="mt-3 inline-flex text-sm font-semibold text-emerald-800 hover:text-emerald-950">Download attached PDF</a> : null}
         {record.message ? <p className="mt-3 whitespace-pre-wrap text-sm leading-6 text-slate-700">{record.message}</p> : null}
       </div>
       <div className="flex shrink-0 flex-col gap-2 sm:flex-row lg:w-72 lg:flex-col">
@@ -59,6 +62,7 @@ function RecordCard({ record, active, savingId, updateRecord }) {
             {statuses.map(status => <option key={status} value={status}>{status}</option>)}
           </select>
         </label>
+        {active === 'students' ? <label className="flex flex-col gap-1 text-xs font-medium text-slate-500">Website visibility<select value={record.visibility || 'private'} onChange={event => updateRecord(id, { visibility: event.target.value })} disabled={savingId === id} className="rounded-lg border border-emerald-900/15 bg-white px-3 py-2 text-sm text-[#10281c]"><option value="private">Private</option><option value="public">Public directory</option></select></label> : null}
         {record.privateNotes !== undefined ? (
           <label className="flex flex-col gap-1 text-xs font-medium text-slate-500">
             Private notes
@@ -78,6 +82,7 @@ export default function AdminDashboard({ email }) {
   const [page, setPage] = useState(1)
   const [savingId, setSavingId] = useState('')
   const [notice, setNotice] = useState('')
+  const [showCreateForm, setShowCreateForm] = useState(false)
   const metrics = useSWR('/api/admin/dashboard', fetcher)
   const recordsUrl = active === 'overview' ? null : `/api/admin/records?type=${active}&search=${encodeURIComponent(search)}&status=${encodeURIComponent(statusFilter)}&page=${page}&pageSize=25`
   const records = useSWR(recordsUrl, fetcher)
@@ -149,7 +154,7 @@ export default function AdminDashboard({ email }) {
     <section className="min-w-0 flex-1 px-4 py-6 md:px-8 md:py-8 lg:px-10">
       <header className="flex flex-col gap-2 border-b border-emerald-900/10 pb-6 sm:flex-row sm:items-end sm:justify-between">
         <div><p className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-700">Private administration</p><h1 className="mt-2 font-sora text-2xl font-bold md:text-3xl">{active === 'overview' ? 'Business overview' : titleFor[active]}</h1><p className="mt-1 text-sm text-slate-500">Live records from your Neon database.</p></div>
-        {active !== 'overview' ? <button onClick={exportCsv} className="inline-flex items-center justify-center gap-2 rounded-xl border border-emerald-900/15 bg-white px-4 py-2.5 text-sm font-semibold hover:bg-emerald-50"><ArrowDownToLine size={16} />Export current page</button> : null}
+        {active !== 'overview' ? <div className="flex flex-wrap gap-2">{['students', 'certificates'].includes(active) ? <button onClick={() => setShowCreateForm(value => !value)} className="rounded-xl bg-[#0c3b27] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#145638]">{active === 'students' ? 'Add student profile' : 'Add certificate'}</button> : null}<button onClick={exportCsv} className="inline-flex items-center justify-center gap-2 rounded-xl border border-emerald-900/15 bg-white px-4 py-2.5 text-sm font-semibold hover:bg-emerald-50"><ArrowDownToLine size={16} />Export current page</button></div> : null}
       </header>
 
       {active === 'overview' ? <>
@@ -160,6 +165,7 @@ export default function AdminDashboard({ email }) {
         </div>
         {metrics.error ? <p role="alert" className="mt-5 text-sm text-red-700">Dashboard data could not be loaded. Check the database connection.</p> : null}
       </> : <>
+        {showCreateForm && ['students', 'certificates'].includes(active) ? <RecordCreateForm type={active} onCancel={() => setShowCreateForm(false)} onCreated={() => { setShowCreateForm(false); setNotice(active === 'students' ? 'Student profile created.' : 'Certificate record created.'); records.mutate(); metrics.mutate() }} /> : null}
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
           <label className="relative flex-1"><span className="sr-only">Search records</span><Search size={16} className="absolute left-3 top-3 text-slate-400" /><input value={search} onChange={event => { setSearch(event.target.value); setPage(1) }} placeholder="Search by name, email, phone…" className="w-full rounded-xl border border-emerald-900/10 bg-white py-2.5 pl-10 pr-4 text-sm outline-none focus:border-emerald-600" /></label>
           <label className="sr-only" htmlFor="status-filter">Filter by status</label><select id="status-filter" value={statusFilter} onChange={event => { setStatusFilter(event.target.value); setPage(1) }} className="rounded-xl border border-emerald-900/10 bg-white px-4 py-2.5 text-sm"><option value="">All statuses</option>{(statusChoices[active] || []).map(status => <option key={status} value={status}>{status}</option>)}</select>

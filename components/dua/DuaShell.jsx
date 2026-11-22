@@ -69,6 +69,7 @@ const routes = [
   { label: 'About Us', href: '/about' },
   { label: 'Services', href: '/services' },
   { label: 'Training', href: '/training' },
+  { label: 'Student Directory', href: '/student-directory' },
   { label: 'Internships', href: '/internships' },
   { label: 'Certificate Verification', href: '/certificate-verification' },
   { label: 'Careers', href: '/careers' },
