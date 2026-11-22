@@ -468,22 +468,22 @@ const Services = () => (
 // ---------- Work ----------
 const projects = [
   {
-    title: 'Duroflex',
-    cat: 'Performance Campaign',
-    metric: '+320%',
-    mtag: 'Revenue Growth',
-    bg: 'from-emerald-950 via-teal-900 to-emerald-900',
-    img: '/work-photos/duroflex.jpg',
-    slug: 'duroflex',
-  },
-  {
     title: "Mother's Lap",
     cat: 'Sleep & Wellness',
-    metric: 'Brand',
-    mtag: 'Growth Campaign',
+    metric: 'Instagram',
+    mtag: 'Content & Brand',
     bg: 'from-teal-950 via-emerald-900 to-green-950',
-    img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Hcs1TGz0VH5fNOUzt6rWruITjBen5L.png',
+    img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-pUcvv6AFSA3r0Fp2p1s8gNThqYjXhO.png',
     slug: 'mothers-lap',
+  },
+  {
+    title: 'VRPNM',
+    cat: 'Website Design',
+    metric: 'vrpnm.com',
+    mtag: 'Website Design & Development',
+    bg: 'from-slate-900 via-emerald-950 to-slate-900',
+    img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-RvAzxQfcItWGIo4H4cd2w0R0vHIx86.png',
+    slug: 'vrnpm',
   },
   {
     title: 'Crocodile',

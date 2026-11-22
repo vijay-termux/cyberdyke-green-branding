@@ -5,19 +5,17 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Nav, Footer, SectionEyebrow, MagneticBtn, PageHero, CTASection, LenisProvider } from '@/components/dua/DuaShell'
 import { ArrowUpRight, TrendingUp } from 'lucide-react'
 
-const categories = ['All', 'Website Design', 'Meta Ads', 'Google Ads', 'SEO', 'Branding', 'Video Production', 'Content Creation']
+const categories = ['All', 'Website Design', 'Meta Ads', 'Google Ads', 'SEO', 'Branding', 'Video Production', 'Content Creation', 'Social Media', 'Video SEO']
 
 const projects = [
-  { slug: 'duroflex', title: 'Duroflex', cat: 'Meta Ads', metric: '+320%', mtag: 'Revenue Growth', img: '/work-photos/duroflex.jpg' },
-  { slug: 'mothers-lap', title: "Mother's Lap", cat: 'Sleep & Wellness', metric: 'Brand', mtag: 'Growth Campaign', img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Hcs1TGz0VH5fNOUzt6rWruITjBen5L.png' },
+  { slug: 'mothers-lap', title: "Mother's Lap", cat: 'Sleep & Wellness', metric: 'Instagram', mtag: 'Content & Brand', img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-pUcvv6AFSA3r0Fp2p1s8gNThqYjXhO.png' },
+  { slug: 'vrnpm', title: 'VRPNM', cat: 'Website Design', metric: 'vrpnm.com', mtag: 'Website Design & Development', img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-RvAzxQfcItWGIo4H4cd2w0R0vHIx86.png' },
+  { slug: 'pranitha-makeup-artist', title: 'makeupartistpranitha', cat: 'Social Media', metric: 'Instagram', mtag: 'Highlight Branding', img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-vtxo7Egf4gShKwrUQkM7v2GTyx6rh.png' },
+  { slug: 'dr-forum', title: 'Dr. Forum', cat: 'Video SEO', metric: 'Video SEO', mtag: 'Meta Ads Campaign Management', img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-THNWllAAWRRulaarxYtO6waEoSwnel.png' },
+  { slug: 'ira-beauty-academy', title: 'IRA Beauty Academy', cat: 'Content Creation', metric: 'Creative', mtag: 'Social Media & Course Marketing', img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-o125OgMXf7kKrvBa1Lv6IPqwKYifAZ.png' },
+  { slug: 'craftvasi-interiors', title: 'CraftVasi Interiors', cat: 'Content Creation', metric: '100+ Tips', mtag: 'Creative, Website & Backend', img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/screencapture-instagram-craftvasi-interiors-2026-11-20-21_41_02.png-uE3Kt7qAlaSnUL9SdsTK7BjAfgQDcx.webp' },
   { slug: 'crocodile', title: 'Crocodile', cat: 'Branding', metric: '+210%', mtag: 'Brand Awareness', img: '/work-photos/crocodile.jpg' },
   { slug: 'tata-play', title: 'Tata Play', cat: 'Google Ads', metric: '+280%', mtag: 'Lead Generation', img: '/work-photos/tata-play.jpg' },
-  { slug: 'sleepycat', title: 'SleepyCat', cat: 'Website Design', metric: '+185%', mtag: 'Organic Traffic', img: '/work-photos/aurora.jpg' },
-  { slug: 'duroflex', title: 'Nexus Fintech', cat: 'Website Design', metric: '+412%', mtag: 'MRR', img: '/work-photos/nexus.jpg' },
-  { slug: 'crocodile', title: 'Orbit Studio', cat: 'Video Production', metric: '24M', mtag: 'Views', img: '/work-photos/orbit.jpg' },
-  { slug: 'tata-play', title: 'Hyperion D2C', cat: 'Meta Ads', metric: '14.2x', mtag: 'ROAS', img: '/work-photos/aurora.jpg' },
-  { slug: 'sleepycat', title: 'Aurora Labs', cat: 'SEO', metric: '+8k', mtag: 'Rankings Gained', img: '/work-photos/aurora.jpg' },
-  { slug: 'crocodile', title: 'Vanguard Luxe', cat: 'Content Creation', metric: '3x', mtag: 'Retail Sales', img: '/work-photos/vanguard.jpg' },
 ]
 
 const caseHighlights = [
