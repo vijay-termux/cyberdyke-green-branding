@@ -13,7 +13,7 @@ export default function WhatsAppFab() {
   }, [])
 
   if (!show) return null
-  const message = encodeURIComponent("Hi DUA 👋, I'd like to discuss a project.")
+  const message = encodeURIComponent("Hi CyberdykeTech, I'd like to discuss a project.")
 
   return (
     <div className="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-2">

@@ -597,7 +597,7 @@ const Work = () => {
   )
 }
 
-// ---------- Counter & Why DUA ----------
+// ---------- Counter & Why CyberdykeTech ----------
 const Counter = ({ to, suffix = '', duration = 2 }) => {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-40px' })
@@ -624,12 +624,12 @@ const Counter = ({ to, suffix = '', duration = 2 }) => {
   )
 }
 
-const WhyDUA = () => (
+const WhyCyberdykeTech = () => (
   <section className="relative bg-white py-24">
     <div className="mx-auto max-w-7xl px-6">
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-center">
         <div className="lg:col-span-4">
-          <SectionEyebrow>Why DUA</SectionEyebrow>
+          <SectionEyebrow>Why CyberdykeTech</SectionEyebrow>
           <h2 className="mt-3 font-sora text-4xl font-black leading-[1.05] tracking-[-0.02em] text-[#0b2419] md:text-5xl">
             We Don't Do Average.
             <br />
@@ -733,7 +733,7 @@ const About = () => (
             Real <span className="text-[#34D399]">Business Results.</span>
           </h2>
           <p className="mt-5 max-w-lg font-inter text-[14px] leading-relaxed text-white/70">
-            DUA (CyberdykeTech) is an integrated agency specializing in cybersecurity architecture, bespoke software
+            CyberdykeTech is an integrated agency specializing in cybersecurity architecture, bespoke software
             engineering, and high-impact digital marketing. We merge creative vision with rigorous technological
             foundations.
           </p>
@@ -855,7 +855,7 @@ const testimonials = [
   {
     name: 'Rohit Sharma',
     role: 'Founder, Duroflex',
-    quote: 'DUA transformed our online presence. Their strategy and execution are outstanding!',
+    quote: 'CyberdykeTech transformed our online presence. Their strategy and execution are outstanding!',
     color: 'from-orange-400 to-red-500',
     init: 'RS',
   },
@@ -869,7 +869,7 @@ const testimonials = [
   {
     name: 'Vikram Mehta',
     role: 'CEO, SleepyCat',
-    quote: 'Our website and brand look world-class now. Amazing experience working with DUA!',
+    quote: 'Our website and brand look world-class now. Amazing experience working with CyberdykeTech!',
     color: 'from-blue-500 to-cyan-500',
     init: 'VM',
   },
@@ -1068,7 +1068,7 @@ const Contact = () => {
             <div className="mt-8 space-y-3">
               {[
                 { icon: <Phone size={14} />, text: '+91 93918 56552' },
-                { icon: <Mail size={14} />, text: 'duadigital.in@gmail.com' },
+                { icon: <Mail size={14} />, text: 'info@cyberdyketech.com' },
                 { icon: <MapPin size={14} />, text: 'Hyderabad, India' },
               ].map((c, i) => (
                 <div key={i} className="flex items-center gap-3">
@@ -1212,7 +1212,7 @@ export default function App() {
           <TrustBar />
           <Services />
           <Work />
-          <WhyDUA />
+          <WhyCyberdykeTech />
           <About />
           <Process />
           <Testimonials />

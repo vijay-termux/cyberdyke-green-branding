@@ -62,10 +62,10 @@ export default function ArticlePage({ params }) {
             {/* Share bar */}
             <div className="mt-14 flex items-center justify-between border-t border-[#E5EAF3] pt-6">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#1565FF] to-[#0A84FF] font-sora text-[11px] font-bold text-white">DUA</div>
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#1565FF] to-[#0A84FF] font-sora text-[11px] font-bold text-white">CT</div>
                 <div>
                   <div className="font-sora text-[13px] font-bold text-[#0A2A6E]">{post.author}</div>
-                  <div className="font-inter text-[11px] text-slate-500">Written by the DUA team</div>
+                  <div className="font-inter text-[11px] text-slate-500">Written by the CyberdykeTech team</div>
                 </div>
               </div>
               <button className="flex items-center gap-2 rounded-full border border-[#E5EAF3] bg-white px-4 py-2 font-sora text-[12px] font-semibold text-[#0A2A6E] transition hover:border-[#1565FF]/30 hover:bg-[#F3F7FF]">

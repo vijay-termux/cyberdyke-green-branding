@@ -18,13 +18,13 @@
   <rect width="1200" height="630" fill="url(#bg)"/>
   <circle cx="900" cy="315" r="280" fill="url(#glow)"/>
   <g font-family="Sora, sans-serif">
-    <text x="80" y="120" font-size="18" font-weight="700" letter-spacing="4" fill="#4F8CFF">DIGITAL UNITED AGENCY</text>
+    <text x="80" y="120" font-size="18" font-weight="700" letter-spacing="4" fill="#4F8CFF">CYBERDYKETECH</text>
     <text x="80" y="280" font-size="92" font-weight="900" fill="#FFFFFF" letter-spacing="-3">We Create</text>
     <text x="80" y="380" font-size="92" font-weight="900" fill="url(#text-g)" letter-spacing="-3">What's Next.</text>
     <text x="80" y="445" font-size="22" font-weight="400" fill="#B8B8B8">Digital marketing · Web · Branding · Video Production</text>
   </g>
   <g font-family="Sora, sans-serif" font-weight="900" transform="translate(820, 260)">
-    <text font-size="200" fill="#FFFFFF" opacity="0.15">DUA</text>
-    <text font-size="200" fill="url(#text-g)" opacity="0.8">DUA</text>
+    <text font-size="200" fill="#FFFFFF" opacity="0.15">CT</text>
+    <text font-size="200" fill="url(#text-g)" opacity="0.8">CT</text>
   </g>
 </svg>

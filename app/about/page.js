@@ -33,7 +33,7 @@ export default function AboutPage() {
             <div className="flex justify-center"><SectionEyebrow>Our Story</SectionEyebrow></div>
             <div className="mt-6 space-y-6 text-center">
               <p className="font-sora text-2xl font-medium leading-relaxed text-[#0A2A6E] md:text-3xl">
-                CyberdykeTech (DUA) is a full-service digital agency helping businesses grow through creativity, technology, and performance marketing.
+                CyberdykeTech is a full-service digital agency helping businesses grow through creativity, technology, and performance marketing.
               </p>
               <p className="mx-auto max-w-2xl font-inter text-base leading-relaxed text-slate-500">
                 We combine strategy, design, development, and marketing into one seamless experience that delivers measurable business results. From ambitious startups to Fortune 500 clients — we obsess over the craft, the data, and the outcome.
