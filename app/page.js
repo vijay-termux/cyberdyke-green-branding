@@ -1035,10 +1035,10 @@ const Contact = () => {
     e.preventDefault()
     setStatus('sending')
     try {
-      const res = await fetch('/api/lead', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, message: `[${form.service}] ${form.message}` }),
+        body: JSON.stringify({ ...form }),
       })
       if (res.ok) {
         setStatus('sent')
@@ -1096,12 +1096,16 @@ const Contact = () => {
           <form onSubmit={submit} className="rounded-2xl border border-white/10 bg-[#062817]/60 p-6 backdrop-blur-xl md:p-8">
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               <div>
-                <label className="mb-1.5 block font-sora text-[11px] font-medium uppercase tracking-wide text-white/60">
+                <label htmlFor="homepage-contact-name" className="mb-1.5 block font-sora text-[11px] font-medium uppercase tracking-wide text-white/60">
                   Your Name
                 </label>
                 <input
+                  id="homepage-contact-name"
+                  name="name"
                   type="text"
                   required
+                  minLength={2}
+                  maxLength={120}
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                   placeholder="John Doe"
@@ -1109,12 +1113,15 @@ const Contact = () => {
                 />
               </div>
               <div>
-                <label className="mb-1.5 block font-sora text-[11px] font-medium uppercase tracking-wide text-white/60">
+                <label htmlFor="homepage-contact-email" className="mb-1.5 block font-sora text-[11px] font-medium uppercase tracking-wide text-white/60">
                   Your Email
                 </label>
                 <input
+                  id="homepage-contact-email"
+                  name="email"
                   type="email"
                   required
+                  maxLength={254}
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   placeholder="john@company.com"
@@ -1123,10 +1130,13 @@ const Contact = () => {
               </div>
             </div>
             <div className="mt-4">
-              <label className="mb-1.5 block font-sora text-[11px] font-medium uppercase tracking-wide text-white/60">
+              <label htmlFor="homepage-contact-service" className="mb-1.5 block font-sora text-[11px] font-medium uppercase tracking-wide text-white/60">
                 Service Interested In
               </label>
               <select
+                id="homepage-contact-service"
+                name="service"
+                required
                 value={form.service}
                 onChange={(e) => setForm({ ...form, service: e.target.value })}
                 className="w-full rounded-lg border border-white/10 bg-[#062817] px-3 py-2.5 font-inter text-[13px] text-white outline-none transition focus:border-[#34D399]"
@@ -1147,10 +1157,15 @@ const Contact = () => {
               </select>
             </div>
             <div className="mt-4">
-              <label className="mb-1.5 block font-sora text-[11px] font-medium uppercase tracking-wide text-white/60">
+              <label htmlFor="homepage-contact-message" className="mb-1.5 block font-sora text-[11px] font-medium uppercase tracking-wide text-white/60">
                 Tell us about your project...
               </label>
               <textarea
+                id="homepage-contact-message"
+                name="message"
+                required
+                minLength={10}
+                maxLength={5000}
                 rows={4}
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
@@ -1163,15 +1178,20 @@ const Contact = () => {
               disabled={status === 'sending'}
               className="mt-5 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#00D084] to-[#00B871] px-6 py-3.5 font-sora text-[13px] font-semibold text-white shadow-lg transition hover:brightness-110 disabled:opacity-60"
             >
-              {status === 'sending' ? 'Sending...' : status === 'sent' ? 'Message Sent ✓' : (
+              {status === 'sending' ? 'Sending...' : status === 'sent' ? 'Message Sent' : (
                 <>
                   Send Message <Send size={13} />
                 </>
               )}
             </button>
             {status === 'sent' && (
-              <div className="mt-3 text-center font-inter text-[12px] text-emerald-300">
+              <div role="status" className="mt-3 text-center font-inter text-[12px] text-emerald-300">
                 We'll be in touch within 24 hours.
+              </div>
+            )}
+            {status === 'error' && (
+              <div role="alert" className="mt-3 text-center font-inter text-[12px] text-red-300">
+                We couldn't save your message. Please try again.
               </div>
             )}
           </form>
