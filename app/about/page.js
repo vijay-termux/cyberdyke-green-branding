@@ -55,7 +55,7 @@ export default function AboutPage() {
               className="mt-10 flex w-full max-w-3xl flex-col overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#151515] text-left shadow-[0_24px_60px_-20px_rgba(10,20,30,0.4)] md:flex-row"
             >
               <img
-                src="/about/founder-beernidi-vijaysagar.png"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Ay0EAwj0llm8Vk48G9jnrnbCKErvXm.png"
                 alt="Vijay Sagar, Founder and CEO of Cyberdyke Tech"
                 width="1200"
                 height="1600"

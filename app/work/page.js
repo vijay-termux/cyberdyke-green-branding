@@ -14,8 +14,6 @@ const projects = [
   { slug: 'pranitha-makeup-artist', title: 'makeupartistpranitha', cat: 'Social Media', metric: 'Content Generation', mtag: 'Social Content & Ad Campaigns', img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-EfobyxgcCI2XfU5PKeLUDwf85O6xKX.png' },
   { slug: 'mothers-lap', title: "Mother's Lap", cat: 'Sleep & Wellness', metric: 'Instagram', mtag: 'Content & Brand', img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-wayqxySqcfOXG5kyCOfrokBHTEGHXK.png' },
   { slug: 'vrnpm', title: 'VRPNM', cat: 'Website Design', metric: 'vrpnm.com', mtag: 'Website Design & Development', img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-RvAzxQfcItWGIo4H4cd2w0R0vHIx86.png' },
-  { slug: 'crocodile', title: 'Crocodile', cat: 'Branding', metric: '+210%', mtag: 'Brand Awareness', img: '/work-photos/crocodile.jpg' },
-  { slug: 'tata-play', title: 'Tata Play', cat: 'Google Ads', metric: '+280%', mtag: 'Lead Generation', img: '/work-photos/tata-play.jpg' },
 ]
 
 const caseHighlights = [

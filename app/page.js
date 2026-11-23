@@ -3,14 +3,13 @@
 import { useEffect, useRef, useState } from 'react'
 import useSWR from 'swr'
 import Link from 'next/link'
-import { motion, useInView, useMotionValue, useSpring } from 'framer-motion'
+import { motion, useMotionValue, useSpring } from 'framer-motion'
 import dynamic from 'next/dynamic'
 import Logo from '@/components/dua/Logo'
 import { Footer, CTASection, LenisProvider } from '@/components/dua/DuaShell'
 import {
   ArrowRight,
   ArrowUpRight,
-  TrendingUp,
   Search,
   Rocket,
   Menu,
@@ -255,36 +254,6 @@ const Hero = () => {
               </MagneticBtn>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="mt-10 flex items-center gap-4"
-            >
-              <div className="flex -space-x-3">
-                {[
-                  'from-orange-400 to-pink-500',
-                  'from-blue-400 to-purple-500',
-                  'from-emerald-400 to-teal-500',
-                  'from-yellow-400 to-orange-500',
-                  'from-rose-400 to-fuchsia-500',
-                ].map((c, i) => (
-                  <div
-                    key={i}
-                    className={`h-10 w-10 rounded-full border-2 border-[#041d11] bg-gradient-to-br ${c} flex items-center justify-center font-sora text-[10px] font-bold text-white shadow-md`}
-                  >
-                    {['R', 'A', 'M', 'V', 'S'][i]}
-                  </div>
-                ))}
-                <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-[#041d11] bg-[#22C55E] font-sora text-[10px] font-bold text-white shadow-md">
-                  250+
-                </div>
-              </div>
-              <div>
-                <div className="font-sora text-sm font-semibold text-white">Happy Clients</div>
-                <div className="font-inter text-xs text-white/60">Worldwide</div>
-              </div>
-            </motion.div>
           </div>
 
           <div className="relative min-h-[480px] lg:min-h-[600px]">
@@ -300,13 +269,13 @@ const Hero = () => {
             >
               <div className="w-[210px] rounded-xl border border-white/15 bg-gradient-to-br from-[#0b3523]/95 to-[#062817]/95 p-4 backdrop-blur-xl shadow-[0_20px_60px_-15px_rgba(34,197,94,0.26)]">
                 <div className="flex items-center justify-between">
-                  <div className="font-sora text-[10px] font-bold uppercase tracking-[0.2em] text-white">Branding</div>
+                  <div className="font-sora text-[10px] font-bold uppercase tracking-[0.2em] text-white">Strategy</div>
                   <div className="flex h-7 w-7 items-center justify-center rounded-md bg-gradient-to-br from-[#22C55E] to-[#14B8A6]">
                     <PenLine size={13} className="text-white" />
                   </div>
                 </div>
                 <ul className="mt-3 space-y-1.5">
-                  {['Strategy', 'Identity', 'Positioning'].map((t) => (
+                  {['Branding', 'Positioning', 'Planning'].map((t) => (
                     <li key={t} className="font-inter text-[12px] text-white/80">
                       {t}
                     </li>
@@ -323,13 +292,13 @@ const Hero = () => {
             >
               <div className="w-[210px] rounded-xl border border-white/15 bg-gradient-to-br from-[#0b3523]/95 to-[#062817]/95 p-4 backdrop-blur-xl shadow-[0_20px_60px_-15px_rgba(34,197,94,0.26)]">
                 <div className="flex items-center justify-between">
-                  <div className="font-sora text-[10px] font-bold uppercase tracking-[0.2em] text-white">Growth</div>
+                  <div className="font-sora text-[10px] font-bold uppercase tracking-[0.2em] text-white">Visibility</div>
                   <div className="flex h-7 w-7 items-center justify-center rounded-md bg-gradient-to-br from-[#22C55E] to-[#14B8A6]">
                     <BarChart3 size={13} className="text-white" />
                   </div>
                 </div>
                 <ul className="mt-3 space-y-1.5">
-                  {['Traffic', 'Leads', 'Revenue'].map((t) => (
+                  {['Search', 'Content', 'Social'].map((t) => (
                     <li key={t} className="font-inter text-[12px] text-white/80">
                       {t}
                     </li>
@@ -344,19 +313,13 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.9 }}
               className="absolute left-2 bottom-24 z-30 hidden md:block"
             >
-              <div className="rounded-xl border border-white/15 bg-white/95 p-3 shadow-xl">
-                <div className="flex items-end gap-1 h-10">
-                  {[40, 60, 45, 80, 65, 100, 90].map((h, i) => (
-                    <div
-                      key={i}
-                      className="w-2 rounded-t bg-gradient-to-t from-[#22C55E] to-[#34D399]"
-                      style={{ height: `${h}%` }}
-                    />
+              <div className="w-[190px] rounded-xl border border-white/15 bg-gradient-to-br from-[#0b3523]/95 to-[#062817]/95 p-4 text-left shadow-[0_20px_60px_-15px_rgba(34,197,94,0.26)] backdrop-blur-xl">
+                <div className="font-sora text-[10px] font-bold uppercase tracking-[0.2em] text-white">Growth</div>
+                <ul className="mt-3 space-y-1.5">
+                  {['Reach', 'Engagement', 'Conversions'].map((item) => (
+                    <li key={item} className="font-inter text-[12px] text-white/80">{item}</li>
                   ))}
-                </div>
-                <div className="mt-2 flex items-center gap-1 text-[10px] font-semibold text-green-600">
-                  <TrendingUp size={10} /> +284%
-                </div>
+                </ul>
               </div>
             </motion.div>
           </div>
@@ -521,22 +484,6 @@ const projects = [
     img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-RvAzxQfcItWGIo4H4cd2w0R0vHIx86.png',
     slug: 'vrnpm',
   },
-  {
-    title: 'Crocodile',
-    cat: 'Branding & Strategy',
-    metric: '+210%',
-    mtag: 'Brand Awareness',
-    bg: 'from-emerald-900 via-teal-900 to-emerald-950',
-    img: '/work-photos/crocodile.jpg',
-  },
-  {
-    title: 'Tata Play',
-    cat: 'Performance Marketing',
-    metric: '+280%',
-    mtag: 'Lead Generation',
-    bg: 'from-slate-900 via-emerald-950 to-slate-900',
-    img: '/work-photos/tata-play.jpg',
-  },
 ]
 
 const homepageContentFetcher = async (url) => {
@@ -633,33 +580,7 @@ const Work = () => {
   )
 }
 
-// ---------- Counter & Why CyberdykeTech ----------
-const Counter = ({ to, suffix = '', duration = 2 }) => {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-40px' })
-  const [n, setN] = useState(0)
-
-  useEffect(() => {
-    if (!inView) return
-    let start = null
-    const step = (t) => {
-      if (!start) start = t
-      const p = Math.min((t - start) / (duration * 1000), 1)
-      const eased = 1 - Math.pow(1 - p, 3)
-      setN(Math.floor(to * eased))
-      if (p < 1) requestAnimationFrame(step)
-    }
-    requestAnimationFrame(step)
-  }, [inView, to, duration])
-
-  return (
-    <span ref={ref}>
-      {n}
-      {suffix}
-    </span>
-  )
-}
-
+// ---------- Why CyberdykeTech ----------
 const WhyCyberdykeTech = () => (
   <section className="relative bg-white py-24">
     <div className="mx-auto max-w-7xl px-6">
@@ -677,52 +598,25 @@ const WhyCyberdykeTech = () => (
           </h2>
         </div>
 
-        <div className="grid grid-cols-3 gap-4 lg:col-span-5">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 lg:col-span-5">
           {[
-            {
-              icon: (
-                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-[#22C55E] to-[#14B8A6] shadow-lg">
-                  <div className="h-6 w-6 rounded bg-white/90" />
-                </div>
-              ),
-              value: 500,
-              suffix: '+',
-              label: 'Projects Completed',
-            },
-            {
-              icon: (
-                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-[#22C55E] to-[#14B8A6] shadow-lg">
-                  <Heart size={26} fill="white" className="text-white" strokeWidth={0} />
-                </div>
-              ),
-              value: 98,
-              suffix: '%',
-              label: 'Client Satisfaction',
-            },
-            {
-              icon: (
-                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-[#22C55E] to-[#14B8A6] shadow-lg">
-                  <Globe2 size={26} className="text-white" strokeWidth={2} />
-                </div>
-              ),
-              value: 24,
-              suffix: '/7',
-              label: 'Industries Served',
-            },
-          ].map((s, i) => (
+            { icon: <Lightbulb size={24} className="text-white" />, label: 'Strategy', description: 'Clear direction for every digital decision.' },
+            { icon: <Search size={24} className="text-white" />, label: 'Visibility', description: 'Make it easier for the right people to find you.' },
+            { icon: <Rocket size={24} className="text-white" />, label: 'Growth', description: 'Build meaningful momentum for your business.' },
+          ].map((item, index) => (
             <motion.div
-              key={i}
+              key={item.label}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="flex flex-col items-center text-center"
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="flex flex-col items-center rounded-2xl border border-slate-100 bg-[#F7F9FC] p-5 text-center"
             >
-              {s.icon}
-              <div className="mt-4 font-sora text-4xl font-black tracking-tight text-[#0b2419] md:text-5xl">
-                <Counter to={s.value} suffix={s.suffix} />
+              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-[#22C55E] to-[#14B8A6] shadow-lg">
+                {item.icon}
               </div>
-              <div className="mt-1 font-inter text-[12px] font-medium text-slate-500">{s.label}</div>
+              <h3 className="mt-4 font-sora text-xl font-bold text-[#0b2419]">{item.label}</h3>
+              <p className="mt-2 font-inter text-[12px] leading-relaxed text-slate-500">{item.description}</p>
             </motion.div>
           ))}
         </div>
@@ -800,10 +694,10 @@ const About = () => (
 
         <div className="grid grid-cols-2 gap-4">
           {[
-            { icon: <Award size={18} className="text-[#34D399]" />, value: '5+', label: 'Years of Excellence' },
-            { icon: <Heart size={18} fill="#34D399" strokeWidth={0} />, value: '250+', label: 'Happy Clients' },
-            { icon: <Users size={18} className="text-[#34D399]" />, value: '15+', label: 'Expert Team' },
-            { icon: <Globe2 size={18} className="text-[#34D399]" />, value: '12+', label: 'Countries Served' },
+            { icon: <Award size={18} className="text-[#34D399]" />, label: 'Cybersecurity' },
+            { icon: <Heart size={18} fill="#34D399" strokeWidth={0} />, label: 'Digital Marketing' },
+            { icon: <Users size={18} className="text-[#34D399]" />, label: 'Website Development' },
+            { icon: <Globe2 size={18} className="text-[#34D399]" />, label: 'Content Production' },
           ].map((s, i) => (
             <motion.div
               key={i}
@@ -814,8 +708,7 @@ const About = () => (
               className="flex flex-col gap-2 rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-xl"
             >
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#22C55E]/15">{s.icon}</div>
-              <div className="mt-2 font-sora text-3xl font-black text-white">{s.value}</div>
-              <div className="font-inter text-[12px] text-white/60">{s.label}</div>
+              <div className="mt-2 font-sora text-lg font-bold text-white">{s.label}</div>
             </motion.div>
           ))}
         </div>
@@ -896,13 +789,6 @@ const testimonials = [
     init: 'RS',
   },
   {
-    name: 'Ananya Reddy',
-    role: 'CMO, Tata Play',
-    quote: 'Professional, creative and result-driven team. Highly recommended!',
-    color: 'from-purple-500 to-pink-500',
-    init: 'AR',
-  },
-  {
     name: 'Vikram Mehta',
     role: 'CEO, SleepyCat',
     quote: 'Our website and brand look world-class now. Amazing experience working with CyberdykeTech!',
@@ -923,7 +809,7 @@ const Testimonials = () => (
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         {testimonials.map((t, i) => (
           <motion.div
             key={t.name}
