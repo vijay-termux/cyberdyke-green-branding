@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import useSWR from 'swr'
 import Link from 'next/link'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 import dynamic from 'next/dynamic'
@@ -18,8 +17,6 @@ import {
   Mail,
   MapPin,
   Send,
-  ChevronRight,
-  ChevronLeft,
   Instagram,
   Youtube,
   Linkedin,
@@ -249,9 +246,6 @@ const Hero = () => {
               <MagneticBtn>
                 Start Your Project <ArrowRight size={14} />
               </MagneticBtn>
-              <MagneticBtn variant="ghost">
-                View Our Work <ArrowUpRight size={14} />
-              </MagneticBtn>
             </motion.div>
 
           </div>
@@ -427,158 +421,6 @@ const Services = () => (
     </div>
   </section>
 )
-
-// ---------- Work ----------
-const projects = [
-  {
-    title: 'CraftVasi Interiors',
-    cat: 'Content Creation',
-    metric: '100+ Tips',
-    mtag: 'Creative, Website & Backend',
-    bg: 'from-slate-900 via-blue-950 to-red-950',
-    img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/screencapture-instagram-craftvasi-interiors-2026-11-20-21_41_02.png-uE3Kt7qAlaSnUL9SdsTK7BjAfgQDcx.webp',
-    slug: 'craftvasi-interiors',
-  },
-  {
-    title: 'IRA Beauty Academy',
-    cat: 'Content Creation',
-    metric: 'Creative',
-    mtag: 'Social Media & Course Marketing',
-    bg: 'from-amber-800 via-yellow-700 to-stone-900',
-    img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-YTvejzUxSr1drAdy02Q9y4g3XEvAJL.png',
-    slug: 'ira-beauty-academy',
-  },
-  {
-    title: 'Dr. Forum',
-    cat: 'Video SEO & Meta Ads',
-    metric: 'Video SEO',
-    mtag: 'Meta Ads Campaign Management',
-    bg: 'from-sky-900 via-blue-800 to-slate-950',
-    img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-883aDMLXHFrE4U4CuH5LoUh4PLefGX.png',
-    slug: 'dr-forum',
-  },
-  {
-    title: 'makeupartistpranitha',
-    cat: 'Social Media Branding',
-    metric: 'Content Generation',
-    mtag: 'Social Content & Ad Campaigns',
-    bg: 'from-purple-950 via-fuchsia-950 to-black',
-    img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-EfobyxgcCI2XfU5PKeLUDwf85O6xKX.png',
-    slug: 'pranitha-makeup-artist',
-  },
-  {
-    title: "Mother's Lap",
-    cat: 'Sleep & Wellness',
-    metric: 'Instagram',
-    mtag: 'Content & Brand',
-    bg: 'from-teal-950 via-emerald-900 to-green-950',
-    img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-wayqxySqcfOXG5kyCOfrokBHTEGHXK.png',
-    slug: 'mothers-lap',
-  },
-  {
-    title: 'VRPNM',
-    cat: 'Website Design',
-    metric: 'vrpnm.com',
-    mtag: 'Website Design & Development',
-    bg: 'from-slate-900 via-emerald-950 to-slate-900',
-    img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-RvAzxQfcItWGIo4H4cd2w0R0vHIx86.png',
-    slug: 'vrnpm',
-  },
-]
-
-const homepageContentFetcher = async (url) => {
-  const response = await fetch(url, { cache: 'no-store' })
-  if (!response.ok) throw new Error('Unable to refresh homepage content.')
-  return response.json()
-}
-
-const Work = () => {
-  const fallbackContent = {
-    heading: 'Work That Speaks\nFor Itself.',
-    buttonText: 'View All Projects',
-    buttonUrl: '/work',
-  }
-  const { data } = useSWR('/api/homepage-content', homepageContentFetcher, {
-    fallbackData: { publishedContent: fallbackContent },
-    refreshInterval: 15000,
-    revalidateOnFocus: true,
-  })
-  const content = data?.publishedContent || fallbackContent
-
-  return (
-  <section id="work" className="relative overflow-hidden bg-[#041d11] py-24">
-    <div className="relative mx-auto max-w-7xl px-6">
-      <div className="mb-10 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
-        <div>
-          <SectionEyebrow dark>Our Work</SectionEyebrow>
-          <h2 className="mt-3 whitespace-pre-line font-sora text-4xl font-black leading-[1.05] tracking-[-0.02em] text-white md:text-5xl">
-            {content.heading}
-          </h2>
-          <Link
-            href={content.buttonUrl || '/work'}
-            className="mt-6 inline-flex items-center gap-2 font-sora text-[13px] font-semibold text-[#34D399] hover:text-white"
-          >
-            {content.buttonText || 'View All Projects'} <ArrowRight size={14} />
-          </Link>
-        </div>
-        <div className="flex gap-2">
-          <button className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/[0.03] text-white transition hover:bg-white/10">
-            <ChevronLeft size={16} />
-          </button>
-          <button className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/[0.03] text-white transition hover:bg-white/10">
-            <ChevronRight size={16} />
-          </button>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {projects.map((p, i) => (
-          <motion.div
-            key={p.title}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.6, delay: i * 0.08 }}
-          >
-            <Link
-              href={p.slug ? `/work/${p.slug}` : '/work'}
-              className="group relative block overflow-hidden rounded-2xl"
-            >
-              <div className={`relative aspect-[4/5] w-full overflow-hidden bg-gradient-to-br ${p.bg}`}>
-                <img
-                  src={p.img}
-                  alt={p.title}
-                  className="absolute inset-0 h-full w-full object-cover transition-all duration-1000 group-hover:scale-110"
-                  onError={(e) => {
-                    e.target.style.display = 'none'
-                  }}
-                />
-                <div className={`absolute inset-0 bg-gradient-to-br ${p.bg} mix-blend-multiply opacity-80`} />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/40" />
-
-                <div className="absolute inset-x-0 top-0 p-5">
-                  <h3 className="font-sora text-2xl font-black text-white drop-shadow-lg">{p.title}</h3>
-                  <p className="mt-0.5 font-inter text-[12px] font-medium text-white/80">{p.cat}</p>
-                </div>
-
-                <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-5">
-                  <div>
-                    <div className="font-sora text-3xl font-black text-white drop-shadow-lg">{p.metric}</div>
-                    <div className="font-inter text-[11px] font-medium text-white/80">{p.mtag}</div>
-                  </div>
-                  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#22C55E] shadow-lg transition-transform duration-500 group-hover:scale-110 group-hover:rotate-45">
-                    <ArrowRight size={15} className="text-white" />
-                  </div>
-                </div>
-              </div>
-            </Link>
-          </motion.div>
-        ))}
-      </div>
-    </div>
-  </section>
-  )
-}
 
 // ---------- Why CyberdykeTech ----------
 const WhyCyberdykeTech = () => (
@@ -1133,7 +975,6 @@ export default function App() {
           <Hero />
           <TrustBar />
           <Services />
-          <Work />
           <WhyCyberdykeTech />
           <About />
           <Process />

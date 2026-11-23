@@ -177,7 +177,7 @@ export const Footer = () => (
         <div>
           <div className="mb-3 font-sora text-[13px] font-bold text-white">Resources</div>
           <ul className="space-y-2">
-            {['Blog', 'Case Studies', 'FAQs', 'Careers', 'Privacy Policy', 'Terms & Conditions'].map(s => (
+            {['Blog', 'FAQs', 'Careers', 'Privacy Policy', 'Terms & Conditions'].map(s => (
               <li key={s}><a href="#" className="font-inter text-[12px] text-white/60 transition hover:text-[#34D399]">{s}</a></li>
             ))}
           </ul>
@@ -249,7 +249,6 @@ export const CTASection = () => (
           </div>
           <div className="flex flex-wrap gap-3">
             <MagneticBtn href="/contact">Start Your Project <ArrowRight size={14} /></MagneticBtn>
-            <MagneticBtn href="/work" variant="ghost">View Our Work <ArrowUpRight size={14} /></MagneticBtn>
           </div>
         </div>
       </div>
