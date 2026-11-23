@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, useInView, useMotionValue, useSpring } from 'framer-motion'
-import { ArrowUpRight, ArrowRight, Menu, X, Linkedin, Instagram, Youtube, Twitter } from 'lucide-react'
+import { ArrowUpRight, ArrowRight, Menu, X, Linkedin, Instagram, Youtube } from 'lucide-react'
 import Logo from './Logo'
 
 export const SectionEyebrow = ({ children, dark }) => (
@@ -85,7 +85,7 @@ export const Nav = () => {
     <motion.nav initial={{ y: -60, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6 }}
       className="fixed left-0 right-0 top-0 z-50 px-4 pt-4">
       <div
-        className="mx-auto flex w-full max-w-7xl items-center justify-between gap-3 rounded-2xl border border-emerald-950/5 bg-white/95 px-3 py-3 shadow-[0_8px_30px_-16px_rgba(15,23,42,0.3)] backdrop-blur-xl transition-all sm:px-5 lg:gap-4 lg:px-6"
+        className="mx-auto flex w-full max-w-[1600px] items-center justify-between gap-3 rounded-2xl border border-emerald-950/5 bg-white/95 px-3 py-3 shadow-[0_8px_30px_-16px_rgba(15,23,42,0.3)] backdrop-blur-xl transition-all sm:px-5 lg:gap-4 lg:px-6"
       >
         <Link
           href="/"
@@ -95,7 +95,7 @@ export const Nav = () => {
           <Logo compact darkText />
         </Link>
 
-        <div className="hidden min-w-0 flex-1 items-center justify-center gap-0 min-[1200px]:flex">
+        <div className="hidden min-w-0 flex-1 items-center justify-center gap-0 min-[1440px]:flex">
           {routes.map((r) => {
             const active = pathname === r.href
             return (
@@ -118,7 +118,7 @@ export const Nav = () => {
             aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={open}
             aria-controls="mobile-site-navigation"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-emerald-950/15 text-[#0b2419] min-[1200px]:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-emerald-950/15 text-[#0b2419] min-[1440px]:hidden"
           >
             {open ? <X size={16} /> : <Menu size={16} />}
           </button>
@@ -151,9 +151,13 @@ export const Footer = () => (
             Secure. Defend. Grow. CyberdykeTech helps businesses protect their digital assets and build sustainable digital growth.
           </p>
           <div className="mt-5 flex gap-2">
-            {[Linkedin, Instagram, Youtube, Twitter].map((I, i) => (
-              <a key={i} href="#" className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white/70 transition hover:border-[#34D399] hover:text-white">
-                <I size={12} />
+            {[
+              { Icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com/company/cyberdyke-tech' },
+              { Icon: Instagram, label: 'Instagram', href: 'https://instagram.com/cyberdyketech' },
+              { Icon: Youtube, label: 'YouTube', href: 'https://youtube.com/@CYBERDYKETECH' },
+            ].map(({ Icon, label, href }) => (
+              <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white/70 transition hover:border-[#34D399] hover:text-white">
+                <Icon size={12} />
               </a>
             ))}
           </div>
@@ -177,7 +181,7 @@ export const Footer = () => (
         <div>
           <div className="mb-3 font-sora text-[13px] font-bold text-white">Resources</div>
           <ul className="space-y-2">
-            {['Blog', 'Case Studies', 'FAQs', 'Careers', 'Privacy Policy', 'Terms & Conditions'].map(s => (
+            {['Blog', 'FAQs', 'Careers', 'Privacy Policy', 'Terms & Conditions'].map(s => (
               <li key={s}><a href="#" className="font-inter text-[12px] text-white/60 transition hover:text-[#34D399]">{s}</a></li>
             ))}
           </ul>
@@ -249,7 +253,6 @@ export const CTASection = () => (
           </div>
           <div className="flex flex-wrap gap-3">
             <MagneticBtn href="/contact">Start Your Project <ArrowRight size={14} /></MagneticBtn>
-            <MagneticBtn href="/work" variant="ghost">View Our Work <ArrowUpRight size={14} /></MagneticBtn>
           </div>
         </div>
       </div>

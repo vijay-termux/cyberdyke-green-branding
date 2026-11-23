@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Nav, Footer, SectionEyebrow, MagneticBtn, PageHero, LenisProvider } from '@/components/dua/DuaShell'
-import { ArrowRight, Send, Phone, Mail, MessageCircle, MapPin, Calendar, Video, Clock, ChevronDown, Linkedin, Instagram, Youtube, Twitter } from 'lucide-react'
+import { ArrowRight, Send, Phone, Mail, MessageCircle, MapPin, Calendar, Video, Clock, ChevronDown, Linkedin, Instagram, Youtube } from 'lucide-react'
 
 const faqs = [
   { q: 'What’s a typical project timeline?', a: 'Discovery + strategy runs 1–2 weeks. Design & development ranges from 3–8 weeks depending on scope. Performance marketing campaigns start delivering results within 2–4 weeks post launch.' },
@@ -84,8 +84,12 @@ export default function ContactPage() {
                 </div>
 
                 <div className="mt-4 flex gap-2">
-                  {[Linkedin, Instagram, Youtube, Twitter].map((I, i) => (
-                    <a key={i} href="#" className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition hover:bg-white/15"><I size={13} /></a>
+                  {[
+                    { Icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com/company/cyberdyke-tech' },
+                    { Icon: Instagram, label: 'Instagram', href: 'https://instagram.com/cyberdyketech' },
+                    { Icon: Youtube, label: 'YouTube', href: 'https://youtube.com/@CYBERDYKETECH' },
+                  ].map(({ Icon, label, href }) => (
+                    <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition hover:bg-white/15"><Icon size={13} /></a>
                   ))}
                 </div>
               </div>

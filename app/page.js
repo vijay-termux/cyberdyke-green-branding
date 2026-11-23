@@ -1,16 +1,14 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import useSWR from 'swr'
 import Link from 'next/link'
-import { motion, useInView, useMotionValue, useSpring } from 'framer-motion'
-import dynamic from 'next/dynamic'
+import { motion, useMotionValue, useSpring } from 'framer-motion'
+import Velaris from '@/components/ui/velaris'
 import Logo from '@/components/dua/Logo'
 import { Footer, CTASection, LenisProvider } from '@/components/dua/DuaShell'
 import {
   ArrowRight,
   ArrowUpRight,
-  TrendingUp,
   Search,
   Rocket,
   Menu,
@@ -19,12 +17,9 @@ import {
   Mail,
   MapPin,
   Send,
-  ChevronRight,
-  ChevronLeft,
   Instagram,
   Youtube,
   Linkedin,
-  Twitter,
   PenLine,
   Lightbulb,
   Globe2,
@@ -35,12 +30,9 @@ import {
   Star,
 } from 'lucide-react'
 
-const Scene3D = dynamic(() => import('@/components/dua/Scene3D'), {
-  ssr: false,
-  loading: () => <div className="h-full w-full" />,
-})
-
 // ---------- Utilities ----------
+const HERO_BACKGROUND_COLORS = ['#137a48', '#18a65b', '#38d778', '#9af3b8']
+
 const SectionEyebrow = ({ children, dark }) => (
   <div
     className={`inline-flex items-center gap-2 font-sora text-[11px] font-semibold uppercase tracking-[0.24em] ${
@@ -134,10 +126,10 @@ const Navbar = () => {
       >
         <div className="mx-auto flex min-h-20 max-w-[1500px] items-center gap-3 px-4 sm:px-6 xl:gap-5 lg:min-h-28">
           <Link href="/" aria-label="CyberdykeTech home" className="flex shrink-0 items-center">
-            <Logo darkText />
+            <Logo compact darkText />
           </Link>
 
-          <nav className="hidden min-w-0 flex-1 items-center justify-end gap-2 lg:flex xl:gap-4">
+          <nav className="hidden min-w-max flex-1 items-center justify-end gap-2 min-[1440px]:flex xl:gap-4">
             {navLinks.map((item) => {
               const isActive = activeTab === item.label
               return (
@@ -158,7 +150,7 @@ const Navbar = () => {
             })}
           </nav>
 
-          <div className="hidden shrink-0 items-center lg:flex">
+          <div className="hidden shrink-0 items-center min-[1440px]:flex">
             <Link href="/contact" className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-full bg-gradient-to-r from-[#00D084] to-[#00B871] px-3 py-3 font-sora text-[12px] font-semibold text-white shadow-[0_0_20px_rgba(0,208,132,0.4)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_28px_rgba(0,208,132,0.7)] xl:px-4 xl:text-[13px]">
               Get Free Consultation
               <ArrowUpRight size={15} />
@@ -167,7 +159,7 @@ const Navbar = () => {
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="flex h-10 w-10 items-center justify-center rounded-xl border border-emerald-950/15 text-[#0b2419] lg:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-xl border border-emerald-950/15 text-[#0b2419] min-[1440px]:hidden"
             aria-label="Toggle Menu"
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
@@ -176,7 +168,7 @@ const Navbar = () => {
       </div>
 
       {mobileOpen && (
-        <div className="border-b border-emerald-950/10 bg-white px-6 py-6 shadow-lg lg:hidden">
+        <div className="border-b border-emerald-950/10 bg-white px-6 py-6 shadow-lg min-[1440px]:hidden">
           <div className="flex flex-col gap-4">
             {navLinks.map((item) => (
               <Link
@@ -202,6 +194,14 @@ const Navbar = () => {
 const Hero = () => {
   return (
     <section id="home" className="relative overflow-hidden pb-12 pt-32 md:pt-36 bg-[#041d11]">
+      <Velaris
+        height="100%"
+        bg="#032819"
+        colors={HERO_BACKGROUND_COLORS}
+        speed={0.7}
+        grain={0.08}
+        className="absolute inset-0"
+      />
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -250,48 +250,11 @@ const Hero = () => {
               <MagneticBtn>
                 Start Your Project <ArrowRight size={14} />
               </MagneticBtn>
-              <MagneticBtn variant="ghost">
-                View Our Work <ArrowUpRight size={14} />
-              </MagneticBtn>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="mt-10 flex items-center gap-4"
-            >
-              <div className="flex -space-x-3">
-                {[
-                  'from-orange-400 to-pink-500',
-                  'from-blue-400 to-purple-500',
-                  'from-emerald-400 to-teal-500',
-                  'from-yellow-400 to-orange-500',
-                  'from-rose-400 to-fuchsia-500',
-                ].map((c, i) => (
-                  <div
-                    key={i}
-                    className={`h-10 w-10 rounded-full border-2 border-[#041d11] bg-gradient-to-br ${c} flex items-center justify-center font-sora text-[10px] font-bold text-white shadow-md`}
-                  >
-                    {['R', 'A', 'M', 'V', 'S'][i]}
-                  </div>
-                ))}
-                <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-[#041d11] bg-[#22C55E] font-sora text-[10px] font-bold text-white shadow-md">
-                  250+
-                </div>
-              </div>
-              <div>
-                <div className="font-sora text-sm font-semibold text-white">Happy Clients</div>
-                <div className="font-inter text-xs text-white/60">Worldwide</div>
-              </div>
-            </motion.div>
           </div>
 
           <div className="relative min-h-[480px] lg:min-h-[600px]">
-            <div className="absolute inset-0">
-              <Scene3D />
-            </div>
-
             <motion.div
               initial={{ opacity: 0, x: 30, y: -10 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
@@ -300,13 +263,13 @@ const Hero = () => {
             >
               <div className="w-[210px] rounded-xl border border-white/15 bg-gradient-to-br from-[#0b3523]/95 to-[#062817]/95 p-4 backdrop-blur-xl shadow-[0_20px_60px_-15px_rgba(34,197,94,0.26)]">
                 <div className="flex items-center justify-between">
-                  <div className="font-sora text-[10px] font-bold uppercase tracking-[0.2em] text-white">Branding</div>
+                  <div className="font-sora text-[10px] font-bold uppercase tracking-[0.2em] text-white">Strategy</div>
                   <div className="flex h-7 w-7 items-center justify-center rounded-md bg-gradient-to-br from-[#22C55E] to-[#14B8A6]">
                     <PenLine size={13} className="text-white" />
                   </div>
                 </div>
                 <ul className="mt-3 space-y-1.5">
-                  {['Strategy', 'Identity', 'Positioning'].map((t) => (
+                  {['Branding', 'Positioning', 'Planning'].map((t) => (
                     <li key={t} className="font-inter text-[12px] text-white/80">
                       {t}
                     </li>
@@ -323,13 +286,13 @@ const Hero = () => {
             >
               <div className="w-[210px] rounded-xl border border-white/15 bg-gradient-to-br from-[#0b3523]/95 to-[#062817]/95 p-4 backdrop-blur-xl shadow-[0_20px_60px_-15px_rgba(34,197,94,0.26)]">
                 <div className="flex items-center justify-between">
-                  <div className="font-sora text-[10px] font-bold uppercase tracking-[0.2em] text-white">Growth</div>
+                  <div className="font-sora text-[10px] font-bold uppercase tracking-[0.2em] text-white">Visibility</div>
                   <div className="flex h-7 w-7 items-center justify-center rounded-md bg-gradient-to-br from-[#22C55E] to-[#14B8A6]">
                     <BarChart3 size={13} className="text-white" />
                   </div>
                 </div>
                 <ul className="mt-3 space-y-1.5">
-                  {['Traffic', 'Leads', 'Revenue'].map((t) => (
+                  {['Search', 'Content', 'Social'].map((t) => (
                     <li key={t} className="font-inter text-[12px] text-white/80">
                       {t}
                     </li>
@@ -344,19 +307,13 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.9 }}
               className="absolute left-2 bottom-24 z-30 hidden md:block"
             >
-              <div className="rounded-xl border border-white/15 bg-white/95 p-3 shadow-xl">
-                <div className="flex items-end gap-1 h-10">
-                  {[40, 60, 45, 80, 65, 100, 90].map((h, i) => (
-                    <div
-                      key={i}
-                      className="w-2 rounded-t bg-gradient-to-t from-[#22C55E] to-[#34D399]"
-                      style={{ height: `${h}%` }}
-                    />
+              <div className="w-[190px] rounded-xl border border-white/15 bg-gradient-to-br from-[#0b3523]/95 to-[#062817]/95 p-4 text-left shadow-[0_20px_60px_-15px_rgba(34,197,94,0.26)] backdrop-blur-xl">
+                <div className="font-sora text-[10px] font-bold uppercase tracking-[0.2em] text-white">Growth</div>
+                <ul className="mt-3 space-y-1.5">
+                  {['Reach', 'Engagement', 'Conversions'].map((item) => (
+                    <li key={item} className="font-inter text-[12px] text-white/80">{item}</li>
                   ))}
-                </div>
-                <div className="mt-2 flex items-center gap-1 text-[10px] font-semibold text-green-600">
-                  <TrendingUp size={10} /> +284%
-                </div>
+                </ul>
               </div>
             </motion.div>
           </div>
@@ -465,201 +422,7 @@ const Services = () => (
   </section>
 )
 
-// ---------- Work ----------
-const projects = [
-  {
-    title: 'CraftVasi Interiors',
-    cat: 'Content Creation',
-    metric: '100+ Tips',
-    mtag: 'Creative, Website & Backend',
-    bg: 'from-slate-900 via-blue-950 to-red-950',
-    img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/screencapture-instagram-craftvasi-interiors-2026-11-20-21_41_02.png-uE3Kt7qAlaSnUL9SdsTK7BjAfgQDcx.webp',
-    slug: 'craftvasi-interiors',
-  },
-  {
-    title: 'IRA Beauty Academy',
-    cat: 'Content Creation',
-    metric: 'Creative',
-    mtag: 'Social Media & Course Marketing',
-    bg: 'from-amber-800 via-yellow-700 to-stone-900',
-    img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-YTvejzUxSr1drAdy02Q9y4g3XEvAJL.png',
-    slug: 'ira-beauty-academy',
-  },
-  {
-    title: 'Dr. Forum',
-    cat: 'Video SEO & Meta Ads',
-    metric: 'Video SEO',
-    mtag: 'Meta Ads Campaign Management',
-    bg: 'from-sky-900 via-blue-800 to-slate-950',
-    img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-883aDMLXHFrE4U4CuH5LoUh4PLefGX.png',
-    slug: 'dr-forum',
-  },
-  {
-    title: 'makeupartistpranitha',
-    cat: 'Social Media Branding',
-    metric: 'Content Generation',
-    mtag: 'Social Content & Ad Campaigns',
-    bg: 'from-purple-950 via-fuchsia-950 to-black',
-    img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-EfobyxgcCI2XfU5PKeLUDwf85O6xKX.png',
-    slug: 'pranitha-makeup-artist',
-  },
-  {
-    title: "Mother's Lap",
-    cat: 'Sleep & Wellness',
-    metric: 'Instagram',
-    mtag: 'Content & Brand',
-    bg: 'from-teal-950 via-emerald-900 to-green-950',
-    img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-wayqxySqcfOXG5kyCOfrokBHTEGHXK.png',
-    slug: 'mothers-lap',
-  },
-  {
-    title: 'VRPNM',
-    cat: 'Website Design',
-    metric: 'vrpnm.com',
-    mtag: 'Website Design & Development',
-    bg: 'from-slate-900 via-emerald-950 to-slate-900',
-    img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-RvAzxQfcItWGIo4H4cd2w0R0vHIx86.png',
-    slug: 'vrnpm',
-  },
-  {
-    title: 'Crocodile',
-    cat: 'Branding & Strategy',
-    metric: '+210%',
-    mtag: 'Brand Awareness',
-    bg: 'from-emerald-900 via-teal-900 to-emerald-950',
-    img: '/work-photos/crocodile.jpg',
-  },
-  {
-    title: 'Tata Play',
-    cat: 'Performance Marketing',
-    metric: '+280%',
-    mtag: 'Lead Generation',
-    bg: 'from-slate-900 via-emerald-950 to-slate-900',
-    img: '/work-photos/tata-play.jpg',
-  },
-]
-
-const homepageContentFetcher = async (url) => {
-  const response = await fetch(url, { cache: 'no-store' })
-  if (!response.ok) throw new Error('Unable to refresh homepage content.')
-  return response.json()
-}
-
-const Work = () => {
-  const fallbackContent = {
-    heading: 'Work That Speaks\nFor Itself.',
-    buttonText: 'View All Projects',
-    buttonUrl: '/work',
-  }
-  const { data } = useSWR('/api/homepage-content', homepageContentFetcher, {
-    fallbackData: { publishedContent: fallbackContent },
-    refreshInterval: 15000,
-    revalidateOnFocus: true,
-  })
-  const content = data?.publishedContent || fallbackContent
-
-  return (
-  <section id="work" className="relative overflow-hidden bg-[#041d11] py-24">
-    <div className="relative mx-auto max-w-7xl px-6">
-      <div className="mb-10 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
-        <div>
-          <SectionEyebrow dark>Our Work</SectionEyebrow>
-          <h2 className="mt-3 whitespace-pre-line font-sora text-4xl font-black leading-[1.05] tracking-[-0.02em] text-white md:text-5xl">
-            {content.heading}
-          </h2>
-          <Link
-            href={content.buttonUrl || '/work'}
-            className="mt-6 inline-flex items-center gap-2 font-sora text-[13px] font-semibold text-[#34D399] hover:text-white"
-          >
-            {content.buttonText || 'View All Projects'} <ArrowRight size={14} />
-          </Link>
-        </div>
-        <div className="flex gap-2">
-          <button className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/[0.03] text-white transition hover:bg-white/10">
-            <ChevronLeft size={16} />
-          </button>
-          <button className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/[0.03] text-white transition hover:bg-white/10">
-            <ChevronRight size={16} />
-          </button>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {projects.map((p, i) => (
-          <motion.div
-            key={p.title}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.6, delay: i * 0.08 }}
-          >
-            <Link
-              href={p.slug ? `/work/${p.slug}` : '/work'}
-              className="group relative block overflow-hidden rounded-2xl"
-            >
-              <div className={`relative aspect-[4/5] w-full overflow-hidden bg-gradient-to-br ${p.bg}`}>
-                <img
-                  src={p.img}
-                  alt={p.title}
-                  className="absolute inset-0 h-full w-full object-cover transition-all duration-1000 group-hover:scale-110"
-                  onError={(e) => {
-                    e.target.style.display = 'none'
-                  }}
-                />
-                <div className={`absolute inset-0 bg-gradient-to-br ${p.bg} mix-blend-multiply opacity-80`} />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/40" />
-
-                <div className="absolute inset-x-0 top-0 p-5">
-                  <h3 className="font-sora text-2xl font-black text-white drop-shadow-lg">{p.title}</h3>
-                  <p className="mt-0.5 font-inter text-[12px] font-medium text-white/80">{p.cat}</p>
-                </div>
-
-                <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-5">
-                  <div>
-                    <div className="font-sora text-3xl font-black text-white drop-shadow-lg">{p.metric}</div>
-                    <div className="font-inter text-[11px] font-medium text-white/80">{p.mtag}</div>
-                  </div>
-                  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#22C55E] shadow-lg transition-transform duration-500 group-hover:scale-110 group-hover:rotate-45">
-                    <ArrowRight size={15} className="text-white" />
-                  </div>
-                </div>
-              </div>
-            </Link>
-          </motion.div>
-        ))}
-      </div>
-    </div>
-  </section>
-  )
-}
-
-// ---------- Counter & Why CyberdykeTech ----------
-const Counter = ({ to, suffix = '', duration = 2 }) => {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-40px' })
-  const [n, setN] = useState(0)
-
-  useEffect(() => {
-    if (!inView) return
-    let start = null
-    const step = (t) => {
-      if (!start) start = t
-      const p = Math.min((t - start) / (duration * 1000), 1)
-      const eased = 1 - Math.pow(1 - p, 3)
-      setN(Math.floor(to * eased))
-      if (p < 1) requestAnimationFrame(step)
-    }
-    requestAnimationFrame(step)
-  }, [inView, to, duration])
-
-  return (
-    <span ref={ref}>
-      {n}
-      {suffix}
-    </span>
-  )
-}
-
+// ---------- Why CyberdykeTech ----------
 const WhyCyberdykeTech = () => (
   <section className="relative bg-white py-24">
     <div className="mx-auto max-w-7xl px-6">
@@ -677,52 +440,25 @@ const WhyCyberdykeTech = () => (
           </h2>
         </div>
 
-        <div className="grid grid-cols-3 gap-4 lg:col-span-5">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 lg:col-span-5">
           {[
-            {
-              icon: (
-                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-[#22C55E] to-[#14B8A6] shadow-lg">
-                  <div className="h-6 w-6 rounded bg-white/90" />
-                </div>
-              ),
-              value: 500,
-              suffix: '+',
-              label: 'Projects Completed',
-            },
-            {
-              icon: (
-                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-[#22C55E] to-[#14B8A6] shadow-lg">
-                  <Heart size={26} fill="white" className="text-white" strokeWidth={0} />
-                </div>
-              ),
-              value: 98,
-              suffix: '%',
-              label: 'Client Satisfaction',
-            },
-            {
-              icon: (
-                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-[#22C55E] to-[#14B8A6] shadow-lg">
-                  <Globe2 size={26} className="text-white" strokeWidth={2} />
-                </div>
-              ),
-              value: 24,
-              suffix: '/7',
-              label: 'Industries Served',
-            },
-          ].map((s, i) => (
+            { icon: <Lightbulb size={24} className="text-white" />, label: 'Strategy', description: 'Clear direction for every digital decision.' },
+            { icon: <Search size={24} className="text-white" />, label: 'Visibility', description: 'Make it easier for the right people to find you.' },
+            { icon: <Rocket size={24} className="text-white" />, label: 'Growth', description: 'Build meaningful momentum for your business.' },
+          ].map((item, index) => (
             <motion.div
-              key={i}
+              key={item.label}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="flex flex-col items-center text-center"
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="flex flex-col items-center rounded-2xl border border-slate-100 bg-[#F7F9FC] p-5 text-center"
             >
-              {s.icon}
-              <div className="mt-4 font-sora text-4xl font-black tracking-tight text-[#0b2419] md:text-5xl">
-                <Counter to={s.value} suffix={s.suffix} />
+              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-[#22C55E] to-[#14B8A6] shadow-lg">
+                {item.icon}
               </div>
-              <div className="mt-1 font-inter text-[12px] font-medium text-slate-500">{s.label}</div>
+              <h3 className="mt-4 font-sora text-xl font-bold text-[#0b2419]">{item.label}</h3>
+              <p className="mt-2 font-inter text-[12px] leading-relaxed text-slate-500">{item.description}</p>
             </motion.div>
           ))}
         </div>
@@ -800,10 +536,10 @@ const About = () => (
 
         <div className="grid grid-cols-2 gap-4">
           {[
-            { icon: <Award size={18} className="text-[#34D399]" />, value: '5+', label: 'Years of Excellence' },
-            { icon: <Heart size={18} fill="#34D399" strokeWidth={0} />, value: '250+', label: 'Happy Clients' },
-            { icon: <Users size={18} className="text-[#34D399]" />, value: '15+', label: 'Expert Team' },
-            { icon: <Globe2 size={18} className="text-[#34D399]" />, value: '12+', label: 'Countries Served' },
+            { icon: <Award size={18} className="text-[#34D399]" />, label: 'Cybersecurity' },
+            { icon: <Heart size={18} fill="#34D399" strokeWidth={0} />, label: 'Digital Marketing' },
+            { icon: <Users size={18} className="text-[#34D399]" />, label: 'Website Development' },
+            { icon: <Globe2 size={18} className="text-[#34D399]" />, label: 'Content Production' },
           ].map((s, i) => (
             <motion.div
               key={i}
@@ -814,8 +550,7 @@ const About = () => (
               className="flex flex-col gap-2 rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-xl"
             >
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#22C55E]/15">{s.icon}</div>
-              <div className="mt-2 font-sora text-3xl font-black text-white">{s.value}</div>
-              <div className="font-inter text-[12px] text-white/60">{s.label}</div>
+              <div className="mt-2 font-sora text-lg font-bold text-white">{s.label}</div>
             </motion.div>
           ))}
         </div>
@@ -896,13 +631,6 @@ const testimonials = [
     init: 'RS',
   },
   {
-    name: 'Ananya Reddy',
-    role: 'CMO, Tata Play',
-    quote: 'Professional, creative and result-driven team. Highly recommended!',
-    color: 'from-purple-500 to-pink-500',
-    init: 'AR',
-  },
-  {
     name: 'Vikram Mehta',
     role: 'CEO, SleepyCat',
     quote: 'Our website and brand look world-class now. Amazing experience working with CyberdykeTech!',
@@ -923,7 +651,7 @@ const Testimonials = () => (
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         {testimonials.map((t, i) => (
           <motion.div
             key={t.name}
@@ -1117,13 +845,13 @@ const Contact = () => {
             </div>
 
             <div className="mt-6 flex gap-2">
-              {[Linkedin, Instagram, Youtube, Twitter].map((IconComponent, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white transition hover:bg-white/15"
-                >
-                  <IconComponent size={13} />
+              {[
+                { Icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com/company/cyberdyke-tech' },
+                { Icon: Instagram, label: 'Instagram', href: 'https://instagram.com/cyberdyketech' },
+                { Icon: Youtube, label: 'YouTube', href: 'https://youtube.com/@CYBERDYKETECH' },
+              ].map(({ Icon, label, href }) => (
+                <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white transition hover:bg-white/15">
+                  <Icon size={13} />
                 </a>
               ))}
             </div>
@@ -1247,7 +975,6 @@ export default function App() {
           <Hero />
           <TrustBar />
           <Services />
-          <Work />
           <WhyCyberdykeTech />
           <About />
           <Process />
