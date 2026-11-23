@@ -20,7 +20,6 @@ import {
   Instagram,
   Youtube,
   Linkedin,
-  Twitter,
   PenLine,
   Lightbulb,
   Globe2,
@@ -845,13 +844,13 @@ const Contact = () => {
             </div>
 
             <div className="mt-6 flex gap-2">
-              {[Linkedin, Instagram, Youtube, Twitter].map((IconComponent, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white transition hover:bg-white/15"
-                >
-                  <IconComponent size={13} />
+              {[
+                { Icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com/company/cyberdyke-tech' },
+                { Icon: Instagram, label: 'Instagram', href: 'https://instagram.com/cyberdyketech' },
+                { Icon: Youtube, label: 'YouTube', href: 'https://youtube.com/@CYBERDYKETECH' },
+              ].map(({ Icon, label, href }) => (
+                <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white transition hover:bg-white/15">
+                  <Icon size={13} />
                 </a>
               ))}
             </div>

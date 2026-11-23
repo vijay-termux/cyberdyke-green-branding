@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, useInView, useMotionValue, useSpring } from 'framer-motion'
-import { ArrowUpRight, ArrowRight, Menu, X, Linkedin, Instagram, Youtube, Twitter } from 'lucide-react'
+import { ArrowUpRight, ArrowRight, Menu, X, Linkedin, Instagram, Youtube } from 'lucide-react'
 import Logo from './Logo'
 
 export const SectionEyebrow = ({ children, dark }) => (
@@ -151,9 +151,13 @@ export const Footer = () => (
             Secure. Defend. Grow. CyberdykeTech helps businesses protect their digital assets and build sustainable digital growth.
           </p>
           <div className="mt-5 flex gap-2">
-            {[Linkedin, Instagram, Youtube, Twitter].map((I, i) => (
-              <a key={i} href="#" className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white/70 transition hover:border-[#34D399] hover:text-white">
-                <I size={12} />
+            {[
+              { Icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com/company/cyberdyke-tech' },
+              { Icon: Instagram, label: 'Instagram', href: 'https://instagram.com/cyberdyketech' },
+              { Icon: Youtube, label: 'YouTube', href: 'https://youtube.com/@CYBERDYKETECH' },
+            ].map(({ Icon, label, href }) => (
+              <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white/70 transition hover:border-[#34D399] hover:text-white">
+                <Icon size={12} />
               </a>
             ))}
           </div>
