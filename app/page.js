@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
-import Scene3D from '@/components/dua/Scene3D'
+import Velaris from '@/components/ui/velaris'
 import Logo from '@/components/dua/Logo'
 import { Footer, CTASection, LenisProvider } from '@/components/dua/DuaShell'
 import {
@@ -31,6 +31,8 @@ import {
 } from 'lucide-react'
 
 // ---------- Utilities ----------
+const HERO_BACKGROUND_COLORS = ['#137a48', '#18a65b', '#38d778', '#9af3b8']
+
 const SectionEyebrow = ({ children, dark }) => (
   <div
     className={`inline-flex items-center gap-2 font-sora text-[11px] font-semibold uppercase tracking-[0.24em] ${
@@ -192,7 +194,14 @@ const Navbar = () => {
 const Hero = () => {
   return (
     <section id="home" className="relative overflow-hidden pb-12 pt-32 md:pt-36 bg-[#041d11]">
-      <Scene3D />
+      <Velaris
+        height="100%"
+        bg="#032819"
+        colors={HERO_BACKGROUND_COLORS}
+        speed={0.7}
+        grain={0.08}
+        className="absolute inset-0"
+      />
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
