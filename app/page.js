@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
-import dynamic from 'next/dynamic'
+import Scene3D from '@/components/dua/Scene3D'
 import Logo from '@/components/dua/Logo'
 import { Footer, CTASection, LenisProvider } from '@/components/dua/DuaShell'
 import {
@@ -29,11 +29,6 @@ import {
   Users,
   Star,
 } from 'lucide-react'
-
-const Scene3D = dynamic(() => import('@/components/dua/Scene3D'), {
-  ssr: false,
-  loading: () => <div className="h-full w-full" />,
-})
 
 // ---------- Utilities ----------
 const SectionEyebrow = ({ children, dark }) => (
@@ -197,6 +192,7 @@ const Navbar = () => {
 const Hero = () => {
   return (
     <section id="home" className="relative overflow-hidden pb-12 pt-32 md:pt-36 bg-[#041d11]">
+      <Scene3D />
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -250,10 +246,6 @@ const Hero = () => {
           </div>
 
           <div className="relative min-h-[480px] lg:min-h-[600px]">
-            <div className="absolute inset-0">
-              <Scene3D />
-            </div>
-
             <motion.div
               initial={{ opacity: 0, x: 30, y: -10 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
