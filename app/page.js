@@ -133,10 +133,10 @@ const Navbar = () => {
       >
         <div className="mx-auto flex min-h-20 max-w-[1500px] items-center gap-3 px-4 sm:px-6 xl:gap-5 lg:min-h-28">
           <Link href="/" aria-label="CyberdykeTech home" className="flex shrink-0 items-center">
-            <Logo darkText />
+            <Logo compact darkText />
           </Link>
 
-          <nav className="hidden min-w-0 flex-1 items-center justify-end gap-2 lg:flex xl:gap-4">
+          <nav className="hidden min-w-max flex-1 items-center justify-end gap-2 min-[1440px]:flex xl:gap-4">
             {navLinks.map((item) => {
               const isActive = activeTab === item.label
               return (
@@ -157,7 +157,7 @@ const Navbar = () => {
             })}
           </nav>
 
-          <div className="hidden shrink-0 items-center lg:flex">
+          <div className="hidden shrink-0 items-center min-[1440px]:flex">
             <Link href="/contact" className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-full bg-gradient-to-r from-[#00D084] to-[#00B871] px-3 py-3 font-sora text-[12px] font-semibold text-white shadow-[0_0_20px_rgba(0,208,132,0.4)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_28px_rgba(0,208,132,0.7)] xl:px-4 xl:text-[13px]">
               Get Free Consultation
               <ArrowUpRight size={15} />
@@ -166,7 +166,7 @@ const Navbar = () => {
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="flex h-10 w-10 items-center justify-center rounded-xl border border-emerald-950/15 text-[#0b2419] lg:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-xl border border-emerald-950/15 text-[#0b2419] min-[1440px]:hidden"
             aria-label="Toggle Menu"
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
@@ -175,7 +175,7 @@ const Navbar = () => {
       </div>
 
       {mobileOpen && (
-        <div className="border-b border-emerald-950/10 bg-white px-6 py-6 shadow-lg lg:hidden">
+        <div className="border-b border-emerald-950/10 bg-white px-6 py-6 shadow-lg min-[1440px]:hidden">
           <div className="flex flex-col gap-4">
             {navLinks.map((item) => (
               <Link

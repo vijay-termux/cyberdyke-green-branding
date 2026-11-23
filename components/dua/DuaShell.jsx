@@ -85,7 +85,7 @@ export const Nav = () => {
     <motion.nav initial={{ y: -60, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6 }}
       className="fixed left-0 right-0 top-0 z-50 px-4 pt-4">
       <div
-        className="mx-auto flex w-full max-w-7xl items-center justify-between gap-3 rounded-2xl border border-emerald-950/5 bg-white/95 px-3 py-3 shadow-[0_8px_30px_-16px_rgba(15,23,42,0.3)] backdrop-blur-xl transition-all sm:px-5 lg:gap-4 lg:px-6"
+        className="mx-auto flex w-full max-w-[1600px] items-center justify-between gap-3 rounded-2xl border border-emerald-950/5 bg-white/95 px-3 py-3 shadow-[0_8px_30px_-16px_rgba(15,23,42,0.3)] backdrop-blur-xl transition-all sm:px-5 lg:gap-4 lg:px-6"
       >
         <Link
           href="/"
@@ -95,7 +95,7 @@ export const Nav = () => {
           <Logo compact darkText />
         </Link>
 
-        <div className="hidden min-w-0 flex-1 items-center justify-center gap-0 min-[1200px]:flex">
+        <div className="hidden min-w-0 flex-1 items-center justify-center gap-0 min-[1440px]:flex">
           {routes.map((r) => {
             const active = pathname === r.href
             return (
@@ -118,7 +118,7 @@ export const Nav = () => {
             aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={open}
             aria-controls="mobile-site-navigation"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-emerald-950/15 text-[#0b2419] min-[1200px]:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-emerald-950/15 text-[#0b2419] min-[1440px]:hidden"
           >
             {open ? <X size={16} /> : <Menu size={16} />}
           </button>
