@@ -5,9 +5,9 @@ const posterUrl = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image
 
 export default function Scene3D() {
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden bg-[radial-gradient(ellipse_at_58%_48%,#12436b_0%,#062c2b_45%,#031b13_100%)]" aria-hidden="true">
+    <div className="pointer-events-none absolute inset-0 overflow-hidden bg-[radial-gradient(ellipse_at_58%_48%,#0d5937_0%,#06452c_45%,#032819_100%)]" aria-hidden="true">
       <video
-        className="hero-background-video absolute inset-0 h-full w-full object-cover opacity-75"
+        className="hero-background-video absolute inset-0 h-full w-full object-cover opacity-90 mix-blend-screen"
         autoPlay
         muted
         loop
@@ -17,8 +17,8 @@ export default function Scene3D() {
       >
         <source src={videoUrl} type="video/mp4" />
       </video>
-      <div className="absolute inset-0 bg-gradient-to-r from-[#031b13]/65 via-[#062c2b]/20 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#031b13]/35 via-transparent to-[#031b13]/15" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#032819]/25 via-[#06452c]/10 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#032819]/20 via-transparent to-[#032819]/10" />
       <style jsx>{`
         @media (prefers-reduced-motion: reduce) {
           .hero-background-video { display: none; }
