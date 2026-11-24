@@ -92,7 +92,7 @@ export const Nav = () => {
           aria-label="CyberdykeTech home"
           className="flex min-w-0 shrink-0 items-center transition-transform hover:scale-[1.02]"
         >
-          <Logo compact darkText />
+          <Logo compact />
         </Link>
 
         <div className="hidden min-w-0 flex-1 items-center justify-center gap-0 min-[1440px]:flex">
@@ -144,7 +144,7 @@ export const Footer = () => (
     <div className="mx-auto max-w-7xl px-6">
       <div className="grid grid-cols-2 gap-8 md:grid-cols-5">
         <div className="col-span-2">
-          <div className="w-full max-w-[20rem] py-2">
+          <div className="w-full max-w-[20rem] rounded-xl bg-white p-2">
             <Logo className="h-auto w-full" />
           </div>
           <p className="mt-4 max-w-xs font-inter text-[13px] leading-relaxed text-white/60">

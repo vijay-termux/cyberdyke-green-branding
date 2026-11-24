@@ -1,24 +1,17 @@
 'use client'
 
-export default function Logo({ className = '', compact = false, darkText = false }) {
-  const compactClasses = compact ? 'h-12 gap-2 md:h-16 md:gap-2.5' : 'h-16 gap-2.5'
-  const markClasses = compact ? 'h-10 w-10 md:h-14 md:w-14' : 'h-14 w-14'
-  const wordmarkClasses = compact ? 'text-[17px] md:text-[21px]' : 'text-[21px]'
+export default function Logo({ className = '', compact = false }) {
+  const sizeClasses = compact ? 'w-[174px] sm:w-[214px]' : 'w-full max-w-[280px]'
 
   return (
-    <span className={`inline-flex shrink-0 items-center ${compactClasses} ${className}`} aria-label="CyberdykeTech">
-      <img
-        src="/logo-new.png"
-        alt="CyberdykeTech globe logo"
-        width="1024"
-        height="1024"
-        fetchPriority="high"
-        decoding="async"
-        className={`block shrink-0 rounded-full object-contain ${markClasses}`}
-      />
-      <span className={`whitespace-nowrap font-sora font-black leading-none tracking-[-0.06em] ${wordmarkClasses}`}>
-        <span className="bg-gradient-to-r from-[#00f5a0] via-[#00dc78] to-[#00b8ff] bg-clip-text text-transparent">CYBERDYKE</span><span className={darkText ? 'text-[#0b2419]' : 'text-white'}>TECH</span>
-      </span>
-    </span>
+    <img
+      src="/cyberdyke-brand.png"
+      alt="CyberdykeTech"
+      width="321"
+      height="85"
+      fetchPriority={compact ? 'high' : undefined}
+      decoding="async"
+      className={`block h-auto shrink-0 ${sizeClasses} ${className}`}
+    />
   )
 }

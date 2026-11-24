@@ -1,7 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 128" role="img" aria-labelledby="title">
-  <title id="title">CyberdykeTech</title>
-  <image href="/logo-new.png" x="0" y="4" width="120" height="120" preserveAspectRatio="xMidYMid meet" />
-  <text x="142" y="78" font-family="Sora, Inter, Arial, sans-serif" font-size="48" font-weight="800" letter-spacing="-2">
-    <tspan fill="#00C98B">CYBERDYKE</tspan><tspan fill="#0B2419">TECH</tspan>
-  </text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 321 85" role="img" aria-labelledby="title">
+  <title id="title">CyberdykeTech logo</title>
+  <image href="/cyberdyke-brand.png" x="0" y="0" width="321" height="85" preserveAspectRatio="xMidYMid meet" />
 </svg>
