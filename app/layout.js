@@ -7,10 +7,8 @@ export const metadata = {
   title: 'CyberdykeTech — Secure. Defend. Grow.',
   description: 'CyberdykeTech — premium digital marketing, branding, website development, and video production for ambitious brands.',
   icons: {
-    icon: [
-      { url: '/favicon.svg', type: 'image/svg+xml' },
-    ],
-    apple: '/favicon.svg',
+    icon: [{ url: '/favicon.png', sizes: '180x180', type: 'image/png' }],
+    apple: '/favicon.png',
   },
   openGraph: {
     title: 'CyberdykeTech — We Create What\'s Next.',
