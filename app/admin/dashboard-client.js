@@ -4,7 +4,8 @@ import useSWR from 'swr'
 import { useMemo, useState } from 'react'
 import RecordCreateForm from './record-create-form'
 import { useRouter } from 'next/navigation'
-import { ArrowDownToLine, BriefcaseBusiness, CheckCircle2, ChevronLeft, ChevronRight, FileBadge, GraduationCap, LayoutDashboard, LogOut, Mail, Search, Users } from 'lucide-react'
+import { ArrowDownToLine, BriefcaseBusiness, CalendarDays, CheckCircle2, ChevronLeft, ChevronRight, FileBadge, GraduationCap, LayoutDashboard, LogOut, Mail, Search, Users } from 'lucide-react'
+import ShootSchedule from './shoot-schedule'
 
 const fetcher = async url => {
   const response = await fetch(url, { cache: 'no-store' })
@@ -20,6 +21,7 @@ const sections = [
   { id: 'internships', label: 'Internship applications', icon: BriefcaseBusiness },
   { id: 'careers', label: 'Careers applications', icon: BriefcaseBusiness },
   { id: 'certificates', label: 'Certificates', icon: FileBadge },
+  { id: 'shoots', label: 'Shoot Schedule', icon: CalendarDays },
 ]
 const statusChoices = {
   contacts: ['new', 'contacted', 'follow-up', 'proposal-sent', 'converted', 'not-interested'],
@@ -29,7 +31,7 @@ const statusChoices = {
   students: ['enrolled', 'active', 'in-progress', 'completed', 'dropped'],
   certificates: ['valid', 'revoked'],
 }
-const titleFor = { students: 'Student management', contacts: 'Contact messages', training: 'Training applications', internships: 'Internship applications', careers: 'Careers applications', certificates: 'Certificate records' }
+const titleFor = { students: 'Student management', contacts: 'Contact messages', training: 'Training applications', internships: 'Internship applications', careers: 'Careers applications', certificates: 'Certificate records', shoots: 'Shoot schedule' }
 const formatDate = value => value ? new Date(value).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) : '—'
 
 function Metric({ label, value, icon: Icon, onClick }) {
@@ -153,10 +155,10 @@ export default function AdminDashboard({ email }) {
     <section className="min-w-0 flex-1 px-4 py-6 md:px-8 md:py-8 lg:px-10">
       <header className="flex flex-col gap-2 border-b border-emerald-900/10 pb-6 sm:flex-row sm:items-end sm:justify-between">
         <div><p className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-700">Private administration</p><h1 className="mt-2 font-sora text-2xl font-bold md:text-3xl">{active === 'overview' ? 'Business overview' : titleFor[active]}</h1><p className="mt-1 text-sm text-slate-500">Live records from your Neon database.</p></div>
-        {active !== 'overview' ? <div className="flex flex-wrap gap-2">{['students', 'certificates'].includes(active) ? <button onClick={() => setShowCreateForm(value => !value)} className="rounded-xl bg-[#0c3b27] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#145638]">{active === 'students' ? 'Add student profile' : 'Add certificate'}</button> : null}<button onClick={exportCsv} className="inline-flex items-center justify-center gap-2 rounded-xl border border-emerald-900/15 bg-white px-4 py-2.5 text-sm font-semibold hover:bg-emerald-50"><ArrowDownToLine size={16} />Export current page</button></div> : null}
+        {active !== 'overview' && active !== 'shoots' ? <div className="flex flex-wrap gap-2">{['students', 'certificates'].includes(active) ? <button onClick={() => setShowCreateForm(value => !value)} className="rounded-xl bg-[#0c3b27] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#145638]">{active === 'students' ? 'Add student profile' : 'Add certificate'}</button> : null}<button onClick={exportCsv} className="inline-flex items-center justify-center gap-2 rounded-xl border border-emerald-900/15 bg-white px-4 py-2.5 text-sm font-semibold hover:bg-emerald-50"><ArrowDownToLine size={16} />Export current page</button></div> : null}
       </header>
 
-      {active === 'overview' ? <>
+      {active === 'shoots' ? <ShootSchedule /> : active === 'overview' ? <>
         <div className="mt-7 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">{cards.map(([label, value, icon, target]) => <Metric key={label} label={label} value={metrics.data ? value : '—'} icon={icon} onClick={() => selectSection(target)} />)}</div>
         <div className="mt-7 grid gap-5 lg:grid-cols-2">
           <section className="rounded-2xl border border-emerald-900/10 bg-white p-6"><h2 className="font-sora text-lg font-bold">Applications at a glance</h2><p className="mt-2 text-sm leading-6 text-slate-500">Open a section to review submissions, update status and add private notes. Figures above are live database counts.</p><div className="mt-5 flex flex-wrap gap-2">{sections.slice(2).map(item => <button key={item.id} onClick={() => selectSection(item.id)} className="rounded-full bg-emerald-50 px-3 py-2 text-xs font-semibold text-emerald-900 hover:bg-emerald-100">{item.label}</button>)}</div></section>
