@@ -621,12 +621,13 @@ const Process = () => (
   </section>
 )
 
-// ---------- Featured founders ----------
-const featuredFounders = [
+// ---------- Client testimonials ----------
+const testimonials = [
   {
     name: 'Bhanuprakash Reddy Pothula',
     role: 'CEO & Founder',
     company: 'Craftvasi',
+    quote: 'Cyberdyke Tech provided excellent digital marketing and website development services. Their team is professional, responsive, and understands our business requirements perfectly. Highly recommended!',
     color: 'from-orange-400 to-red-500',
     init: 'BP',
   },
@@ -634,6 +635,7 @@ const featuredFounders = [
     name: 'Swathi Vaghmare',
     role: 'Founder',
     company: 'Ira Beauty Academy',
+    quote: 'Had a great experience with Cyberdyke Tech! The team is very supportive, creative, and always ready to help. Really happy with their work and service.',
     color: 'from-blue-500 to-cyan-500',
     init: 'SV',
   },
@@ -641,6 +643,7 @@ const featuredFounders = [
     name: 'Pranitha',
     role: 'Founder',
     company: 'Pranitha Makeup Studio & Academy',
+    quote: 'Working with Cyberdyke Tech has helped us improve our online presence and reach more customers. Their marketing strategies and creative content are impressive.',
     color: 'from-violet-500 to-fuchsia-500',
     init: 'P',
   },
@@ -648,46 +651,50 @@ const featuredFounders = [
     name: 'Mohammad Aswaq',
     role: 'Director',
     company: "Mother's Lap Mattress and Sofa Furniture",
+    quote: 'Excellent service, great communication, and quality work. Cyberdyke Tech is a reliable partner for digital marketing and website development.',
     color: 'from-emerald-500 to-teal-500',
     init: 'MA',
   },
 ]
 
-const FeaturedFounders = () => (
+const Testimonials = () => (
   <section className="relative bg-[#F0F4FB] py-24">
     <div className="mx-auto max-w-7xl px-6">
       <div className="mb-10 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
         <div>
-          <SectionEyebrow>Featured founders</SectionEyebrow>
+          <SectionEyebrow>Client testimonials</SectionEyebrow>
           <h2 className="mt-3 font-sora text-4xl font-black leading-[1.05] tracking-[-0.02em] text-[#0b2419] md:text-5xl">
-            Founders &amp; Business Leaders
+            What Our Clients Say
           </h2>
         </div>
       </div>
 
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
-        {featuredFounders.map((founder, i) => (
+        {testimonials.map((founder, i) => (
           <motion.article
             key={founder.name}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="rounded-2xl bg-white p-6 shadow-sm"
+            className="flex h-full flex-col rounded-2xl bg-white p-6 shadow-sm"
           >
-            <div className="flex items-center gap-3">
+            <blockquote className="mb-5 flex-1 font-inter text-[14px] leading-relaxed text-slate-700">
+              {founder.quote}
+            </blockquote>
+            <div className="mt-auto flex items-center gap-3 border-t border-slate-100 pt-4">
               <div
                 aria-hidden="true"
-                className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${founder.color} font-sora text-sm font-bold text-white`}
+                className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${founder.color} font-sora text-sm font-bold text-white`}
               >
                 {founder.init}
               </div>
               <div className="min-w-0">
                 <h3 className="font-sora text-[13px] font-bold leading-snug text-[#0b2419]">{founder.name}</h3>
                 <p className="mt-1 font-inter text-[11px] text-slate-500">{founder.role}</p>
+                <p className="font-inter text-[11px] text-slate-500">{founder.company}</p>
               </div>
             </div>
-            <p className="mt-5 border-t border-slate-100 pt-4 font-inter text-sm font-medium leading-relaxed text-slate-700">{founder.company}</p>
           </motion.article>
         ))}
       </div>
@@ -988,7 +995,7 @@ export default function App() {
           <WhyCyberdykeTech />
           <About />
           <Process />
-          <FeaturedFounders />
+          <Testimonials />
           <Insights />
           <Contact />
         </main>
