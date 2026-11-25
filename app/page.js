@@ -27,7 +27,6 @@ import {
   BarChart3,
   Award,
   Users,
-  Star,
 } from 'lucide-react'
 
 // ---------- Utilities ----------
@@ -622,70 +621,80 @@ const Process = () => (
   </section>
 )
 
-// ---------- Testimonials ----------
-const testimonials = [
+// ---------- Featured founders ----------
+const featuredFounders = [
   {
-    name: 'Rohit Sharma',
-    role: 'Founder, Duroflex',
-    quote: 'CyberdykeTech transformed our online presence. Their strategy and execution are outstanding!',
+    name: 'Bhanuprakash Reddy Pothula',
+    role: 'CEO & Founder',
+    company: 'Craftvasi',
     color: 'from-orange-400 to-red-500',
-    init: 'RS',
+    init: 'BP',
   },
   {
-    name: 'Vikram Mehta',
-    role: 'CEO, SleepyCat',
-    quote: 'Our website and brand look world-class now. Amazing experience working with CyberdykeTech!',
+    name: 'Swathi Vaghmare',
+    role: 'Founder',
+    company: 'Ira Beauty Academy',
     color: 'from-blue-500 to-cyan-500',
-    init: 'VM',
+    init: 'SV',
+  },
+  {
+    name: 'Pranitha',
+    role: 'Founder',
+    company: 'Pranitha Makeup Studio & Academy',
+    color: 'from-violet-500 to-fuchsia-500',
+    init: 'P',
+  },
+  {
+    name: 'Mohammad Aswaq',
+    role: 'Director',
+    company: "Mother's Lap Mattress and Sofa Furniture",
+    color: 'from-emerald-500 to-teal-500',
+    init: 'MA',
   },
 ]
 
-const Testimonials = () => (
+const FeaturedFounders = () => (
   <section className="relative bg-[#F0F4FB] py-24">
     <div className="mx-auto max-w-7xl px-6">
       <div className="mb-10 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
         <div>
-          <SectionEyebrow>Client Love</SectionEyebrow>
+          <SectionEyebrow>Featured founders</SectionEyebrow>
           <h2 className="mt-3 font-sora text-4xl font-black leading-[1.05] tracking-[-0.02em] text-[#0b2419] md:text-5xl">
-            What Our Clients Say
+            Founders &amp; Business Leaders
           </h2>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-        {testimonials.map((t, i) => (
-          <motion.div
-            key={t.name}
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
+        {featuredFounders.map((founder, i) => (
+          <motion.article
+            key={founder.name}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="rounded-2xl bg-white p-7 shadow-sm"
+            className="rounded-2xl bg-white p-6 shadow-sm"
           >
-            <div className="mb-3 text-5xl leading-none text-[#22C55E]/30 font-serif">"</div>
-            <p className="font-inter text-[14px] leading-relaxed text-slate-700">{t.quote}</p>
-            <div className="mt-6 flex items-center gap-3 border-t border-slate-100 pt-4">
+            <div className="flex items-center gap-3">
               <div
-                className={`flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br ${t.color} font-sora text-sm font-bold text-white`}
+                aria-hidden="true"
+                className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${founder.color} font-sora text-sm font-bold text-white`}
               >
-                {t.init}
+                {founder.init}
               </div>
-              <div className="flex-1">
-                <div className="font-sora text-[13px] font-bold text-[#0b2419]">{t.name}</div>
-                <div className="font-inter text-[11px] text-slate-500">{t.role}</div>
-                <div className="mt-1 flex gap-0.5">
-                  {[...Array(5)].map((_, k) => (
-                    <Star key={k} size={10} fill="#FBBF24" className="text-yellow-400" strokeWidth={0} />
-                  ))}
-                </div>
+              <div className="min-w-0">
+                <h3 className="font-sora text-[13px] font-bold leading-snug text-[#0b2419]">{founder.name}</h3>
+                <p className="mt-1 font-inter text-[11px] text-slate-500">{founder.role}</p>
               </div>
             </div>
-          </motion.div>
+            <p className="mt-5 border-t border-slate-100 pt-4 font-inter text-sm font-medium leading-relaxed text-slate-700">{founder.company}</p>
+          </motion.article>
         ))}
       </div>
     </div>
   </section>
 )
+
 
 // ---------- Insights ----------
 const insights = [
@@ -979,7 +988,7 @@ export default function App() {
           <WhyCyberdykeTech />
           <About />
           <Process />
-          <Testimonials />
+          <FeaturedFounders />
           <Insights />
           <Contact />
         </main>
