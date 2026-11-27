@@ -35,6 +35,9 @@ export function validateSchedule(body) {
 }
 
 export async function conflictFor(schedule, ignoreId) {
+  const teamMembers = schedule.assignedTeamMembers.length
+    ? sql`ARRAY[${sql.join(schedule.assignedTeamMembers.map(member => sql`${member}`), sql`, `)}]::text[]`
+    : sql`ARRAY[]::text[]`
   const conditions = [
     eq(shootSchedules.shootDate, schedule.shootDate),
     lt(shootSchedules.startTime, schedule.endTime),
@@ -42,7 +45,7 @@ export async function conflictFor(schedule, ignoreId) {
     ne(shootSchedules.status, 'Cancelled'),
     or(
       eq(shootSchedules.assignedPhotographer, schedule.assignedPhotographer),
-      sql`${shootSchedules.assignedTeamMembers} && ${schedule.assignedTeamMembers}::text[]`,
+      sql`${shootSchedules.assignedTeamMembers} && ${teamMembers}`,
     ),
   ]
   if (ignoreId) conditions.push(sql`${shootSchedules.id} <> ${ignoreId}::uuid`)
@@ -92,7 +95,13 @@ export async function POST(request) {
     const [record] = await db.insert(shootSchedules).values(parsed.value).returning()
     return NextResponse.json({ record }, { status: 201 })
   } catch (error) {
-    console.error('[admin:shoot-schedules:create]', { name: error?.name, code: error?.code, status: error?.status })
+    const cause = error?.cause
+    console.error('[admin:shoot-schedules:create]', {
+      name: error?.name,
+      code: error?.code || cause?.code,
+      constraint: cause?.constraint,
+      status: error?.status,
+    })
     const status = error.status || 500
     return NextResponse.json({ error: status === 401 ? 'Unauthorized.' : 'Unable to create this shoot schedule. Your details are still in the form; please try again.' }, { status })
   }
